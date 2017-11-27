@@ -7,3 +7,4 @@ export default {
     s3Bucket: 'rptf-lobbygreeter-meta-data',
   }
 }
+

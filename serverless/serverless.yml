@@ -207,7 +207,19 @@ resources:
             ProviderName:
               'Fn::GetAtt': [ UserPool, ProviderName]
 
-#  Outputs:
+  Outputs:
+    IdentityPoolId:
+      Description: "The IdentityPool"
+      Value:
+        Ref: IdentityPool
+    UserPoolId:
+      Description: "The UserPoolId"
+      Value:
+        Ref: UserPool
+    ClientId:
+      Description: "The Client id"
+      Value:
+        Ref: UserPoolClient
 #     NewOutput:
 #       Description: "Description for the output"
 #       Value: "Some output value"

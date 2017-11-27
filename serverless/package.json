@@ -1,0 +1,16 @@
+{
+  "name": "fia-alerts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "inputApi.js",
+  "dependencies": {
+    "aws-sdk": "^2.157.0",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -42,7 +42,7 @@ class Admin extends Component {
 
   render() {
     // TODO example code
-    listPendingAlerts(this.props.AWS)
+    // listPendingAlerts(this.props.AWS)
 
     const alert = {
       "type": "security",

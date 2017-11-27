@@ -8,7 +8,7 @@ import {
 // { lat: -34.397, lng: 150.644 }
 const MapDisplay = withScriptjs(withGoogleMap(props =>
   <GoogleMap
-    defaultZoom={8}
+    defaultZoom={10}
     defaultCenter={props.positions[0]}
   >
     {props.positions.map(pos => (

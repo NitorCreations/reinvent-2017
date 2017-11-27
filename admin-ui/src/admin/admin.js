@@ -128,7 +128,7 @@ class Admin extends Component {
             <div className="left col-12">
               <MapDisplay
                 positions={positions}
-                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKUDBJCrNjL5cpZmqugqjQL8ydWNidX7M&v=3.exp&libraries=geometry,drawing,places"
+                googleMapURL={'https://maps.googleapis.com/maps/api/js?key=' + window.config.googleMapsApiKey + '&v=3.exp&libraries=geometry,drawing,places'}
                 loadingElement={<div style={{ height: `100%` }} />}
                 containerElement={<div style={{ height: `400px` }} />}
                 mapElement={<div style={{ height: `100%` }} />} />

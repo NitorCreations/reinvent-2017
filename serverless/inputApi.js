@@ -19,7 +19,8 @@ module.exports.createAlert = (event, context, callback) => {
         description: {S: alert.description},
         time: {S: alert.time},
         lon: {S: alert.lon},
-        lat: {S: alert.lat}
+        lat: {S: alert.lat},
+        status: {S: "pending"}
     };
     console.log(item);
 

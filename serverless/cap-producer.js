@@ -3,25 +3,52 @@
 const json2xml = require('json2xml');
 const _ = require('lodash');
 
+function constructArea(payload) {
+	return _.map(payload.alert.location, (location) => {
+		const circleVal = location.lat+","+location.lon+" "+payload.alert.locationParams.radius;
+		return {
+			circle : circleVal 
+		}
+	})
+}
+
 //module.exports.produceCap = (event, context, callback) => {
 	function produceCap () {
 
 		const testAlertJson = {
 			"alert": {
-				"type": "security",
-				"location": {
+				"category": "security",
+				"event": "disaster event",
+				"urgency": "immediate",
+				"severity": "Severe",
+				"certainty": "Likely",
+				"senderName": "Nitor RPTF",
+				"headline" : "There's ongoing hackathon event",
+				"description" : "There's ongoing hackathon. Expect really cool stuff. This is going to be huge",
+				"instruction" : "Code until you drop",
+				"locationType" : "circle", //TODO, only supports circle for now
+				"locationParams" : {
+					radius : "1"
+				},
+				"location": [
+				{
 					"lon": 25.6,
 					"lat": 60.0
-				},
+				}, 
+				{
+					"lon": 24.6,
+					"lat": 61.0
+				}
+				],
 				"description": [
-					{
-						language: "en-us",
-						text : "this is sparta"
-					}, 
-					{
-						language : "es-US",
-						text : "this is spanish sparta"
-					}
+				{
+					language: "en-us",
+					text : "this is sparta"
+				}, 
+				{
+					language : "es-US",
+					text : "this is spanish sparta"
+				}
 				],
 				"time": "2017-11-26T10:34:56.123Z"
 			}
@@ -38,7 +65,21 @@ const _ = require('lodash');
 			}
 		});
 		*/
-		const capInfo = (testAlertJson.alert.description) ? testAlertJson.alert.description[0] : null;
+		const localizedDescription = (testAlertJson.alert.description) ? testAlertJson.alert.description[0] : null;
+		
+		const area = constructArea(testAlertJson);
+
+		const capInfo = {
+			language: localizedDescription.language,
+			category: testAlertJson.alert.category,
+			event: testAlertJson.alert.event,
+			urgency: testAlertJson.alert.urgency,
+			severity: testAlertJson.alert.severity,
+			certainty: testAlertJson.alert.certainty,
+			senderName: testAlertJson.alert.senderName,
+			headline: testAlertJson.alert.headline,
+			area: area //TODO add support for multiple areas if needed. Currently we aggregate all points to one area
+		}
 		console.log("capInfo", capInfo);
 
 		const capXml = {
@@ -58,7 +99,7 @@ const _ = require('lodash');
 
 	};
 
-produceCap();
+	produceCap();
 
 /*
 <identifier>TRI13970876.2</identifier> 

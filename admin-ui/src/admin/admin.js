@@ -3,6 +3,7 @@ import './admin.css'
 import { RaisedButton, TextField } from 'material-ui'
 import config from '../config.js'
 import * as _ from 'lodash'
+import MapDisplay from '../map-display/map-display'
 
 class Admin extends Component {
   constructor(props) {
@@ -27,6 +28,10 @@ class Admin extends Component {
     const discarded = _.map([alert, alert], (x) => (<div>{x.description}</div>))
     const approved = _.map([alert, alert], (x) => (<div>{x.description}</div>))
     const newalerts = _.map([alert, alert], (x) => (<div>{x.description}</div>))
+
+    const positions = [
+      { lat: 36.1212, lng: -115.1697 },
+      { lat: 36.1012, lng: -115.1097 }]
 
     return (
       <div className="left col-12 Admin">
@@ -54,7 +59,16 @@ class Admin extends Component {
         </div>
 
 
-        <div className="left col-8 p2">meh</div>
+        <div className="left col-8 p2">
+
+          <MapDisplay
+            positions={positions}
+            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKUDBJCrNjL5cpZmqugqjQL8ydWNidX7M&v=3.exp&libraries=geometry,drawing,places"
+            loadingElement={<div style={{ height: `100%` }} />}
+            containerElement={<div style={{ height: `400px` }} />}
+            mapElement={<div style={{ height: `100%` }} />} />
+
+        </div>
 
 
       </div>

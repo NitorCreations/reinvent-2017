@@ -28,3 +28,8 @@ export const approveAlert = (AWS, alert) => {
 export const rejectAlert = (AWS, alert) => {
   console.error('rejectAlert is not implemented yet')
 }
+
+export const geoReverse = ({ lat, lon }) => {
+  return fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
+    .then(res => res.json())
+}

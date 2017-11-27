@@ -25,7 +25,7 @@ const alert2 = {
 class Admin extends Component {
   constructor(props) {
     super(props)
-    console.log('xxx', props)
+
     this.state = {
       isApprovedExpanded: false,
       isDiscardedExpanded: false,

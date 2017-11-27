@@ -7,8 +7,8 @@ class AppLoginForm extends LoginForm {
   constructor(props) {
     super(props)
     this.state = {
-      username: 'test',
-      password: 'test123!TEST',
+      username: 'testi',
+      password: 'test123TEST!',
     }
   }
 

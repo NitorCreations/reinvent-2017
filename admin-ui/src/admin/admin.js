@@ -15,13 +15,22 @@ class Admin extends Component {
       selected: null
     }
 
-    this.selec = this.select.bind(this)
+    this.approve = this.approve.bind(this)
+    this.discard = this.discard.bind(this)
   }
 
   select(item) {
     this.setState({
       selected: item
     })
+  }
+
+  approve(item = this.state.selected) {
+    console.log('approve', item)
+  }
+
+  discard(item = this.state.selected) {
+    console.log('discard', item)
   }
 
   render() {
@@ -61,7 +70,7 @@ class Admin extends Component {
           <div className="left col-12 p2">
             <h2 className="text-red clickable" onClick={() => this.setState({ isNewExpanded: !this.state.isNewExpanded})}>
               New alerts
-              <span class="text-small text-dark"> ({newalerts.length})</span>
+              <span className="text-small text-dark"> ({newalerts.length})</span>
             </h2>
             { this.state.isNewExpanded && (<List dense="true">
               {newalerts}
@@ -71,7 +80,7 @@ class Admin extends Component {
           <div className="left col-12 p2">
             <h2 className="text-red clickable" onClick={() => this.setState({ isApprovedExpanded: !this.state.isApprovedExpanded})}>
               Approved alerts
-              <span class="text-small text-dark"> ({approved.length})</span>
+              <span className="text-small text-dark"> ({approved.length})</span>
             </h2>
             { this.state.isApprovedExpanded && (<List dense="true">
               {approved}
@@ -81,7 +90,7 @@ class Admin extends Component {
           <div className="left col-12 p2">
             <h2 className="text-red clickable" onClick={() => this.setState({ isDiscardedExpanded: !this.state.isDiscardedExpanded})}>
               Discarded alerts
-              <span class="text-small text-dark"> ({discarded.length})</span>
+              <span className="text-small text-dark"> ({discarded.length})</span>
             </h2>
             { this.state.isDiscardedExpanded && (<List dense="true">
               {discarded}
@@ -91,17 +100,31 @@ class Admin extends Component {
         </div>
 
 
-        <div className="left col-8 p2">
+        { this.state.selected && (
+          <div className="left col-8 p2">
 
-          { this.state.selected && <MapDisplay
-            positions={positions}
-            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKUDBJCrNjL5cpZmqugqjQL8ydWNidX7M&v=3.exp&libraries=geometry,drawing,places"
-            loadingElement={<div style={{ height: `100%` }} />}
-            containerElement={<div style={{ height: `400px` }} />}
-            mapElement={<div style={{ height: `100%` }} />} />
-          }
+            <div className="left col-12 mb2">
+              <div>Description: {this.state.selected.description}</div>
+              <div>Type: {this.state.selected.type}</div>
+              <div>Time: {this.state.selected.time}</div>
+            </div>
 
-        </div>
+            <div className="left col-12 mb2">
+              <RaisedButton label="Approve" primary={true} onClick={this.approve} />
+              <RaisedButton label="Discard" onClick={this.discard} />
+            </div>
+
+            <div className="left col-12">
+              <MapDisplay
+                positions={positions}
+                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKUDBJCrNjL5cpZmqugqjQL8ydWNidX7M&v=3.exp&libraries=geometry,drawing,places"
+                loadingElement={<div style={{ height: `100%` }} />}
+                containerElement={<div style={{ height: `400px` }} />}
+                mapElement={<div style={{ height: `100%` }} />} />
+            </div>
+
+          </div>)
+        }
 
 
       </div>

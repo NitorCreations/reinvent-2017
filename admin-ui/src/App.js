@@ -4,7 +4,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import AwsLogin from './aws-login/aws-login'
 import AppNav from './app-nav/app-nav'
-import MapDisplay from './map-display/map-display'
 
 import './App.css';
 import { BrowserRouter, Route } from 'react-router-dom'

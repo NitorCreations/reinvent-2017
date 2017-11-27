@@ -32,3 +32,23 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.bg-black {
+  background: $gray-dark;
+}
+
+.bg-gray {
+  background: #e0e0e0;
+}
+
+.text-red {
+  color: $red;
+}
+
+.text-dark {
+  color: $gray-dark;
+}
+
+.clickable {
+  cursor: pointer;
+}

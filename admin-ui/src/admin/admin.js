@@ -102,7 +102,7 @@ class Admin extends Component {
   }
 
   render() {
-    // TODO 
+    // TODO
     listPendingAlerts(this.props.AWS)
       .then(data => {
         console.info('listPendingAlerts', data)

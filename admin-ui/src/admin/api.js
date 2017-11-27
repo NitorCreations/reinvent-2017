@@ -3,19 +3,28 @@
  */
 export const listPendingAlerts = (AWS) => {
   let docClient = new AWS.DynamoDB.DocumentClient();
+  console.log('Alerts table', window.config.aws.dynamoPendingAlerts)
   const params = {
     TableName: window.config.aws.dynamoPendingAlerts,
-    KeyConditionExpression: "#s = 'pending'",
+    /*
+    FilterExpression: '#s = :pending',
     ExpressionAttributeNames: {
-      "#s": "status"
+      '#s': 'Status'
     },
+    ExpressionAttributeValues: {
+      ':pending': {S: 'pending'}
+    },
+    */
   }
   return new Promise((resolve, reject) => {
-    docClient.query(params, (err, data) => {
+    // TODO this makes full table scan
+    docClient.scan(params, (err, data) => {
       if(err) {
         console.error('Failed to fetch pending alerts', err)
         reject(err)
+        return 
       }
+      console.info('data found,', data)
       resolve(data)
     })
   })

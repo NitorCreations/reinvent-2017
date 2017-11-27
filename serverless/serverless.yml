@@ -174,12 +174,39 @@ resources:
           WriteCapacityUnits: 5
     ImagesBucket:
       Type: AWS::S3::Bucket
+    UserPool:
+      Type: "AWS::Cognito::UserPool"
+      Properties:
+        AdminCreateUserConfig:
+          AllowAdminCreateUserOnly: true
+          InviteMessageTemplate:
+            EmailMessage: "Your username is {username} and temporary password is {####}."
+            EmailSubject: "Your temporary password"
+            SMSMessage: "Your username is {username} and temporary password is {####}. "
+          UnusedAccountValidityDays: 7 
+        AliasAttributes: [preferred_username, email]
+        AutoVerifiedAttributes: [ email ]
+        UserPoolName: ${opt:stage}-fia
+    UserPoolClient:
+      Type: "AWS::Cognito::UserPoolClient"
+      Properties:
+        ClientName: ${opt:stage}-fia-userclient,
+        ExplicitAuthFlows: 
+          - ADMIN_NO_SRP_AUTH
+        GenerateSecret: false
+        UserPoolId:
+          Ref: UserPool
+    IdentityPool:
+      Type: "AWS::Cognito::IdentityPool"
+      Properties:
+        IdentityPoolName: ${opt:stage}fia
+        AllowUnauthenticatedIdentities: false
+        CognitoIdentityProviders: 
+          - ClientId:
+              Ref: UserPoolClient
+            ProviderName:
+              'Fn::GetAtt': [ UserPool, ProviderName]
 
-
-#    NewResource:
-#      Type: AWS::S3::Bucket
-#      Properties:
-#        BucketName: my-new-bucket
 #  Outputs:
 #     NewOutput:
 #       Description: "Description for the output"

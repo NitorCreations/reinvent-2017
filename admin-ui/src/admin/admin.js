@@ -14,6 +14,14 @@ const alert = {
   "time": "2017-11-26T10:34:56.123Z"
 }
 
+const alert2 = {
+  "type": "security",
+  "lon": -115.1597,
+  "lat": 36.1292,
+  "description": "this is las vegas",
+  "time": "2017-11-26T10:34:56.123Z"
+}
+
 class Admin extends Component {
   constructor(props) {
     super(props)
@@ -94,15 +102,23 @@ class Admin extends Component {
   }
 
   render() {
-    const discarded = _.map([alert, alert], (x, i) => (<ListItem key={i}
+    // TODO 
+    listPendingAlerts(this.props.AWS)
+      .then(data => {
+        console.info('listPendingAlerts', data)
+      }, err => {
+        console.error('listPendingAlerts', err)
+      })
+
+    const discarded = _.map([alert, alert2], (x, i) => (<ListItem key={i}
       onClick={this.select.bind(this, x)}>
       {x.description}
     </ListItem>))
-    const approved = _.map([alert, alert], (x, i) => (<ListItem key={i}
+    const approved = _.map([alert, alert2], (x, i) => (<ListItem key={i}
       onClick={this.select.bind(this, x)}>
       {x.description}
     </ListItem>))
-    const newalerts = _.map([alert, alert], (x, i) => (<ListItem key={i}
+    const newalerts = _.map([alert, alert2], (x, i) => (<ListItem key={i}
       onClick={this.select.bind(this, x)}>
       {x.description}
     </ListItem>))

@@ -4,6 +4,7 @@ import { RadioButton, RadioButtonGroup, RaisedButton, TextField } from 'material
 import * as _ from 'lodash'
 import MapDisplay from '../map-display/map-display'
 import List, { ListItem } from 'material-ui/List';
+import { listPendingAlerts } from './api'
 
 const alert = {
   "type": "security",
@@ -16,6 +17,7 @@ const alert = {
 class Admin extends Component {
   constructor(props) {
     super(props)
+    console.log('xxx', props)
     this.state = {
       isApprovedExpanded: false,
       isDiscardedExpanded: false,

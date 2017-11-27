@@ -7,6 +7,6 @@ export default {
     s3Bucket: 'rptf-lobbygreeter-meta-data',
     dynamoPendingAlerts: 'aws-nodejs-riki-DDBTableNotApproved-KSLRC9DRKFZN',
   },
-  googleMapsApiKey: '',
+  googleMapsApiKey: 'AIzaSyBKUDBJCrNjL5cpZmqugqjQL8ydWNidX7M',
 }
 

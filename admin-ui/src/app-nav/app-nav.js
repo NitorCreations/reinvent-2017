@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
 import FontIcon from 'material-ui/FontIcon';
-import { AppBar, Drawer, MenuItem } from 'material-ui'
+import { Drawer, MenuItem } from 'material-ui'
 
 class PageNav extends React.Component {
   constructor(props) {
@@ -13,10 +13,6 @@ class PageNav extends React.Component {
 
     return (
       <div>
-        <AppBar
-          title="ACME Industries"
-          onLeftIconButtonTouchTap={() => this.setState({open: true})}
-        />
         <Drawer
           docked={false}
           width={150}

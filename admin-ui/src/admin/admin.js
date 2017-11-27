@@ -33,6 +33,11 @@ class Admin extends Component {
     console.log('discard', item)
   }
 
+  logout() {
+    localStorage.clear()
+    window.location = '/'
+  }
+
   render() {
     const alert = {
       "type": "security",
@@ -65,10 +70,11 @@ class Admin extends Component {
         <div className="left col-4 bg-gray">
           <div className="bg-black left col-12 p2">
             <img src="https://www.internetalerts.org/img/fia-logo-color.b829b6b9.svg" alt="FIA"/>
+            <a onClick={this.logout} className="clickable text-white">Logout</a>
           </div>
 
           <div className="left col-12 p2">
-            <h2 className="text-red clickable" onClick={() => this.setState({ isNewExpanded: !this.state.isNewExpanded})}>
+            <h2 className="text-red clickable m0" onClick={() => this.setState({ isNewExpanded: !this.state.isNewExpanded})}>
               New alerts
               <span className="text-small text-dark"> ({newalerts.length})</span>
             </h2>
@@ -78,7 +84,7 @@ class Admin extends Component {
           </div>
 
           <div className="left col-12 p2">
-            <h2 className="text-red clickable" onClick={() => this.setState({ isApprovedExpanded: !this.state.isApprovedExpanded})}>
+            <h2 className="text-red clickable m0" onClick={() => this.setState({ isApprovedExpanded: !this.state.isApprovedExpanded})}>
               Approved alerts
               <span className="text-small text-dark"> ({approved.length})</span>
             </h2>
@@ -88,7 +94,7 @@ class Admin extends Component {
           </div>
 
           <div className="left col-12 p2">
-            <h2 className="text-red clickable" onClick={() => this.setState({ isDiscardedExpanded: !this.state.isDiscardedExpanded})}>
+            <h2 className="text-red clickable m0" onClick={() => this.setState({ isDiscardedExpanded: !this.state.isDiscardedExpanded})}>
               Discarded alerts
               <span className="text-small text-dark"> ({discarded.length})</span>
             </h2>
@@ -111,7 +117,7 @@ class Admin extends Component {
 
             <div className="left col-12 mb2">
               <RaisedButton label="Approve" primary={true} onClick={this.approve} />
-              <RaisedButton label="Discard" onClick={this.discard} />
+              <RaisedButton label="Discard" onClick={this.discard} className="ml1" />
             </div>
 
             <div className="left col-12">

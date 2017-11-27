@@ -1,3 +1,9 @@
 .Admin {
 	text-align: left;
+	height: 100vh;
+
+	> div {
+		height: 100vh;
+	}
 }
+

@@ -12,28 +12,45 @@ class Admin extends Component {
     this.state = {
       isApprovedExpanded: false,
       isDiscardedExpanded: false,
-      isNewExpanded: true
+      isNewExpanded: true,
+      selected: null
     }
+
+    this.selec = this.select.bind(this)
+  }
+
+  select(item) {
+    this.setState({
+      selected: item
+    })
   }
 
   render() {
     const alert = {
       "type": "security",
-      "location": {
-          "lon": 25.6,
-          "lat": 60.0
-      },
+      "lon": -115.1697,
+      "lat": 36.1212,
       "description": "this is sparta",
       "time": "2017-11-26T10:34:56.123Z"
     }
 
-    const discarded = _.map([alert, alert], (x, i) => (<ListItem key={i}>{x.description}</ListItem>))
-    const approved = _.map([alert, alert], (x, i) => (<ListItem key={i}>{x.description}</ListItem>))
-    const newalerts = _.map([alert, alert], (x, i) => (<ListItem key={i}>{x.description}</ListItem>))
+    const discarded = _.map([alert, alert], (x, i) => (<ListItem key={i}
+      onClick={this.select.bind(this, x)}>
+      {x.description}
+    </ListItem>))
+    const approved = _.map([alert, alert], (x, i) => (<ListItem key={i}
+      onClick={this.select.bind(this, x)}>
+      {x.description}
+    </ListItem>))
+    const newalerts = _.map([alert, alert], (x, i) => (<ListItem key={i}
+      onClick={this.select.bind(this, x)}>
+      {x.description}
+    </ListItem>))
 
-    const positions = [
-      { lat: 36.1212, lng: -115.1697 },
-      { lat: 36.1012, lng: -115.1097 }]
+    const positions = [{
+      lat: _.get(this.state.selected, 'lat'),
+      lng: _.get(this.state.selected, 'lon')
+    }]
 
     return (
       <div className="left col-12 Admin">
@@ -77,12 +94,13 @@ class Admin extends Component {
 
         <div className="left col-8 p2">
 
-          <MapDisplay
+          { this.state.selected && <MapDisplay
             positions={positions}
             googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKUDBJCrNjL5cpZmqugqjQL8ydWNidX7M&v=3.exp&libraries=geometry,drawing,places"
             loadingElement={<div style={{ height: `100%` }} />}
             containerElement={<div style={{ height: `400px` }} />}
             mapElement={<div style={{ height: `100%` }} />} />
+          }
 
         </div>
 

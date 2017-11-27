@@ -4,23 +4,7 @@ import { RadioButton, RadioButtonGroup, RaisedButton, TextField } from 'material
 import * as _ from 'lodash'
 import MapDisplay from '../map-display/map-display'
 import List, { ListItem } from 'material-ui/List';
-import { listPendingAlerts } from './api'
-
-const alert = {
-  "type": "security",
-  "lon": -115.1697,
-  "lat": 36.1212,
-  "description": "this is sparta",
-  "time": "2017-11-26T10:34:56.123Z"
-}
-
-const alert2 = {
-  "type": "security",
-  "lon": -115.1597,
-  "lat": 36.1292,
-  "description": "this is las vegas",
-  "time": "2017-11-26T10:34:56.123Z"
-}
+import { listPendingAlerts, geoReverse } from './api'
 
 class Admin extends Component {
   constructor(props) {

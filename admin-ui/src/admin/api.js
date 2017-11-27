@@ -2,6 +2,24 @@
  * AWS = this.props.AWS in React
  */
 export const listPendingAlerts = (AWS) => {
+  const alert = {
+    "type": "security",
+    "lon": -115.1697,
+    "lat": 36.1212,
+    "description": "this is sparta",
+    "time": "2017-11-26T10:34:56.123Z"
+  }
+
+  const alert2 = {
+    "type": "security",
+    "lon": -115.1597,
+    "lat": 36.1292,
+    "description": "this is las vegas",
+    "time": "2017-11-26T10:34:56.123Z"
+  }
+
+  return Promise.resolve([ alert, alert2 ])
+
   let docClient = new AWS.DynamoDB.DocumentClient();
   const params = {
     TableName: window.config.aws.dynamoPendingAlerts,

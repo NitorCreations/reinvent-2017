@@ -6,6 +6,7 @@ export default {
     clientId: '6hc7u2db52joneeefo82nnmhss',
     s3Bucket: 'rptf-lobbygreeter-meta-data',
     dynamoPendingAlerts: 'aws-nodejs-riki-DDBTableNotApproved-KSLRC9DRKFZN',
-  }
+  },
+  googleMapsApiKey: '',
 }
 

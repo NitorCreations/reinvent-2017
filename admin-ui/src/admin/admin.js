@@ -155,7 +155,6 @@ class Admin extends Component {
 
         { this.state.selected && (
           <div className="left col-8 p2">
-
             <div className="card p2">
               <div className="left col-12 mb2">
                 <h3 className="m0 mb2">
@@ -179,7 +178,7 @@ class Admin extends Component {
                 </div>
                 <MapDisplay
                   positions={positions}
-                  googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKUDBJCrNjL5cpZmqugqjQL8ydWNidX7M&v=3.exp&libraries=geometry,drawing,places"
+                  googleMapURL={'https://maps.googleapis.com/maps/api/js?key=' + window.config.googleMapsApiKey + '&v=3.exp&libraries=geometry,drawing,places'}
                   loadingElement={<div style={{ height: `100%` }} />}
                   containerElement={<div style={{ height: `200px` }} />}
                   mapElement={<div style={{ height: `100%` }} />} />

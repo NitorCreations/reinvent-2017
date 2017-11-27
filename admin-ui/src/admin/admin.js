@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './admin.css'
 import { RaisedButton, TextField } from 'material-ui'
-import config from '../config.js'
 import * as _ from 'lodash'
 import MapDisplay from '../map-display/map-display'
 import List, { ListItem } from 'material-ui/List';

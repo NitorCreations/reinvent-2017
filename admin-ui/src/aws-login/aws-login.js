@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import './aws-login.css'
 import { RaisedButton, TextField } from 'material-ui'
 import { AWSCognitoWrapper } from '@nitor/aws-react-components'
-import config from '../config.js'
 import AppLoginForm from './app-login-form'
 import PasswordResetForm from './password-reset-form'
 import Admin from '../admin/admin'
@@ -43,10 +42,10 @@ class AwsLogin extends Component {
 
   render() {
     return (
-      <AWSCognitoWrapper awsRegion={config.aws.region}
-                         awsUserPoolId={config.aws.userPoolId}
-                         awsIdentityPoolId={config.aws.identityPoolId}
-                         awsClientId={config.aws.clientId}
+      <AWSCognitoWrapper awsRegion={window.config.aws.region}
+                         awsUserPoolId={window.config.aws.userPoolId}
+                         awsIdentityPoolId={window.config.aws.identityPoolId}
+                         awsClientId={window.config.aws.clientId}
                          overrideLoginForm={AppLoginForm}
                          overrideResetPassword={PasswordResetForm}>
         <Admin></Admin>

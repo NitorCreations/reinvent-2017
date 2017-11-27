@@ -1,9 +1,9 @@
 export default {
   aws: {
-    region: 'eu-west-1',
-    identityPoolId: 'eu-west-1:ec5ab305-9612-4cc8-aa2f-5feb87afbf28',
-    userPoolId: 'eu-west-1_g3UjICkAd',
-    clientId: '7c08nqviqs1slg28nhubnf6mt1',
+    region: 'us-east-1',
+    identityPoolId: 'us-east-1:7f57202a-25e2-43a0-992b-5cc14f7460f1',
+    userPoolId: 'us-east-1_hdF8ZIuqB',
+    clientId: '6hc7u2db52joneeefo82nnmhss',
     s3Bucket: 'rptf-lobbygreeter-meta-data',
   }
 }

@@ -1,5 +1,4 @@
 import AWS from 'aws-sdk';
-import config from '../config.js'
 
 /**
  Update blob to S3 bucket.
@@ -7,7 +6,7 @@ import config from '../config.js'
 function upload(blob) {
   const s3 = new AWS.S3({ apiVersion: '2006-03-01' });
   const uploadParams = {
-    Bucket: config.s3Bucket,
+    Bucket: window.config.aws.s3Bucket,
     Key: `${Date.now()}.png`,
     Body: blob
   }

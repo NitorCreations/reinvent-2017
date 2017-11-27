@@ -5,6 +5,7 @@ import { AWSCognitoWrapper } from '@nitor/aws-react-components'
 import config from '../config.js'
 import AppLoginForm from './app-login-form'
 import PasswordResetForm from './password-reset-form'
+import Admin from '../admin/admin'
 
 /**
  * AwsLogin page.
@@ -48,9 +49,7 @@ class AwsLogin extends Component {
                          awsClientId={config.aws.clientId}
                          overrideLoginForm={AppLoginForm}
                          overrideResetPassword={PasswordResetForm}>
-        <p>
-          You are logged in
-        </p>
+        <Admin></Admin>
       </AWSCognitoWrapper>
     )
   }

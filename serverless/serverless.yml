@@ -206,6 +206,74 @@ resources:
               Ref: UserPoolClient
             ProviderName:
               'Fn::GetAtt': [ UserPool, ProviderName]
+    IdentityPoolIAMRole:
+      Type: "AWS::IAM::Role"
+      Properties: 
+        AssumeRolePolicyDocument:
+          Version: "2012-10-17"
+          Statement: 
+            - 
+              Sid: ""
+              Effect: "Allow"
+              Principal: 
+                Federated: cognito-identity.amazonaws.com
+              Action: "sts:AssumeRoleWithWebIdentity"
+              Condition:
+                StringEquals:
+                  cognito-identity.amazonaws.com:aud:
+                    Fn::Join:
+                      - ""
+                      - - ""
+                        - Ref: IdentityPool
+                ForAnyValue:StringLike:
+                  cognito-identity.amazonaws.com:amr: "authenticated"
+        Path: "/"
+        Policies:
+          - PolicyName: ${opt:stage}-fia-authenticated
+            PolicyDocument:
+              Version: "2012-10-17"
+              Statement:
+                - Effect: Allow
+                  Action:
+                    - "dynamodb:BatchGetItem"
+                    - "dynamodb:PutItem"
+                    - "dynamodb:DescribeTable"
+                    - "dynamodb:DeleteItem"
+                    - "dynamodb:GetItem"
+                    - "dynamodb:Scan"
+                    - "dynamodb:Query"
+                    - "dynamodb:UpdateItem"
+                  Resource:
+                    - {'Fn::GetAtt': [DDBTableApproved, Arn]}
+                    - {'Fn::GetAtt': [DDBTableNotApproved, Arn]}
+        RoleName: ${opt:stage}fia-authenticated
+    
+    FrontendBucket:
+      Type: AWS::S3::Bucket
+#    CloudFrontDistribution:
+#      Type: AWS::CloudFront::Distribution
+#      Properties:
+#        DistributionConfig:
+#          Origins:
+#          - DomainName:
+#              Fn:GetAtt: [FrontendBucket, DomainName]
+#            Id: myS3Origin
+#            S3OriginConfig:
+#              OriginAccessIdentity: origin-access-identity/cloudfront/E127EXAMPLE51Z
+#          Enabled: 'true'
+#          DefaultRootObject: index.html
+#          Aliases:
+#          - mysite.example.com
+#          - yoursite.example.com
+#          DefaultCacheBehavior:
+#            AllowedMethods:
+#            - GET
+#            TargetOriginId: myS3Origin
+#            ForwardedValues:
+#              QueryString: 'false'
+#              Cookies:
+#                Forward: none
+#            ViewerProtocolPolicy: allow-all
 
   Outputs:
     IdentityPoolId:

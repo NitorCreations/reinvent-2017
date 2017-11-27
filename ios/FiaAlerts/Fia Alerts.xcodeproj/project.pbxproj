@@ -1,0 +1,429 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A61D70A41FCC9260008B52B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61D70A31FCC9260008B52B2 /* AppDelegate.swift */; };
+		A61D70A61FCC9260008B52B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61D70A51FCC9260008B52B2 /* ViewController.swift */; };
+		A61D70A91FCC9260008B52B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A61D70A71FCC9260008B52B2 /* Main.storyboard */; };
+		A61D70AC1FCC9260008B52B2 /* Fia_Alerts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A61D70AA1FCC9260008B52B2 /* Fia_Alerts.xcdatamodeld */; };
+		A61D70AE1FCC9260008B52B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A61D70AD1FCC9260008B52B2 /* Assets.xcassets */; };
+		A61D70B11FCC9260008B52B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A61D70AF1FCC9260008B52B2 /* LaunchScreen.storyboard */; };
+		A65AF19A1FCCCB510052B934 /* AlertsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65AF1991FCCCB510052B934 /* AlertsTableViewController.swift */; };
+		A65F73D91FCC9E2500F2492E /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = A65F73D81FCC9E2500F2492E /* profile.png */; };
+		FBCEA8A273B0C4F607C90B7E /* Pods_Fia_Alerts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A43B95930CE3FD091905425B /* Pods_Fia_Alerts.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2455AD697476055E80B6E6CD /* Pods-Fia Alerts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fia Alerts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fia Alerts/Pods-Fia Alerts.release.xcconfig"; sourceTree = "<group>"; };
+		64FC149D88EE029703B14B72 /* Pods-Fia Alerts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fia Alerts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fia Alerts/Pods-Fia Alerts.debug.xcconfig"; sourceTree = "<group>"; };
+		A43B95930CE3FD091905425B /* Pods_Fia_Alerts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fia_Alerts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A61D70A01FCC9260008B52B2 /* Fia Alerts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fia Alerts.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A61D70A31FCC9260008B52B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A61D70A51FCC9260008B52B2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A61D70A81FCC9260008B52B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A61D70AB1FCC9260008B52B2 /* Fia_Alerts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Fia_Alerts.xcdatamodel; sourceTree = "<group>"; };
+		A61D70AD1FCC9260008B52B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A61D70B01FCC9260008B52B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A61D70B21FCC9260008B52B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A65AF1991FCCCB510052B934 /* AlertsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsTableViewController.swift; sourceTree = "<group>"; };
+		A65F73D81FCC9E2500F2492E /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A61D709D1FCC9260008B52B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBCEA8A273B0C4F607C90B7E /* Pods_Fia_Alerts.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		602FD8EA39C2CD85872279C5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				64FC149D88EE029703B14B72 /* Pods-Fia Alerts.debug.xcconfig */,
+				2455AD697476055E80B6E6CD /* Pods-Fia Alerts.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A61D70971FCC9260008B52B2 = {
+			isa = PBXGroup;
+			children = (
+				A61D70A21FCC9260008B52B2 /* Fia Alerts */,
+				A61D70A11FCC9260008B52B2 /* Products */,
+				602FD8EA39C2CD85872279C5 /* Pods */,
+				AEA7372D335CBE224C0328A6 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A61D70A11FCC9260008B52B2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A61D70A01FCC9260008B52B2 /* Fia Alerts.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A61D70A21FCC9260008B52B2 /* Fia Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				A65F73D81FCC9E2500F2492E /* profile.png */,
+				A61D70A31FCC9260008B52B2 /* AppDelegate.swift */,
+				A61D70A51FCC9260008B52B2 /* ViewController.swift */,
+				A61D70A71FCC9260008B52B2 /* Main.storyboard */,
+				A61D70AD1FCC9260008B52B2 /* Assets.xcassets */,
+				A61D70AF1FCC9260008B52B2 /* LaunchScreen.storyboard */,
+				A61D70B21FCC9260008B52B2 /* Info.plist */,
+				A61D70AA1FCC9260008B52B2 /* Fia_Alerts.xcdatamodeld */,
+				A65AF1991FCCCB510052B934 /* AlertsTableViewController.swift */,
+			);
+			path = "Fia Alerts";
+			sourceTree = "<group>";
+		};
+		AEA7372D335CBE224C0328A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A43B95930CE3FD091905425B /* Pods_Fia_Alerts.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A61D709F1FCC9260008B52B2 /* Fia Alerts */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A61D70B51FCC9260008B52B2 /* Build configuration list for PBXNativeTarget "Fia Alerts" */;
+			buildPhases = (
+				F2ED893F5D5C6482849DEAC6 /* [CP] Check Pods Manifest.lock */,
+				A61D709C1FCC9260008B52B2 /* Sources */,
+				A61D709D1FCC9260008B52B2 /* Frameworks */,
+				A61D709E1FCC9260008B52B2 /* Resources */,
+				05DF7DCFA9C7271E58B2F1BF /* [CP] Embed Pods Frameworks */,
+				78283E01D459708B34D83F9C /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Fia Alerts";
+			productName = "Fia Alerts";
+			productReference = A61D70A01FCC9260008B52B2 /* Fia Alerts.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A61D70981FCC9260008B52B2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0910;
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = Nitor;
+				TargetAttributes = {
+					A61D709F1FCC9260008B52B2 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = A61D709B1FCC9260008B52B2 /* Build configuration list for PBXProject "Fia Alerts" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A61D70971FCC9260008B52B2;
+			productRefGroup = A61D70A11FCC9260008B52B2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A61D709F1FCC9260008B52B2 /* Fia Alerts */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A61D709E1FCC9260008B52B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A61D70B11FCC9260008B52B2 /* LaunchScreen.storyboard in Resources */,
+				A61D70AE1FCC9260008B52B2 /* Assets.xcassets in Resources */,
+				A61D70A91FCC9260008B52B2 /* Main.storyboard in Resources */,
+				A65F73D91FCC9E2500F2492E /* profile.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		05DF7DCFA9C7271E58B2F1BF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fia Alerts/Pods-Fia Alerts-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		78283E01D459708B34D83F9C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fia Alerts/Pods-Fia Alerts-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F2ED893F5D5C6482849DEAC6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A61D709C1FCC9260008B52B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A65AF19A1FCCCB510052B934 /* AlertsTableViewController.swift in Sources */,
+				A61D70A61FCC9260008B52B2 /* ViewController.swift in Sources */,
+				A61D70AC1FCC9260008B52B2 /* Fia_Alerts.xcdatamodeld in Sources */,
+				A61D70A41FCC9260008B52B2 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A61D70A71FCC9260008B52B2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A61D70A81FCC9260008B52B2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A61D70AF1FCC9260008B52B2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A61D70B01FCC9260008B52B2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A61D70B31FCC9260008B52B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A61D70B41FCC9260008B52B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A61D70B61FCC9260008B52B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64FC149D88EE029703B14B72 /* Pods-Fia Alerts.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y849S4R6L9;
+				INFOPLIST_FILE = "Fia Alerts/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rptf.Fia-Alerts";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A61D70B71FCC9260008B52B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2455AD697476055E80B6E6CD /* Pods-Fia Alerts.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y849S4R6L9;
+				INFOPLIST_FILE = "Fia Alerts/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rptf.Fia-Alerts";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A61D709B1FCC9260008B52B2 /* Build configuration list for PBXProject "Fia Alerts" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A61D70B31FCC9260008B52B2 /* Debug */,
+				A61D70B41FCC9260008B52B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A61D70B51FCC9260008B52B2 /* Build configuration list for PBXNativeTarget "Fia Alerts" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A61D70B61FCC9260008B52B2 /* Debug */,
+				A61D70B71FCC9260008B52B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A61D70AA1FCC9260008B52B2 /* Fia_Alerts.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A61D70AB1FCC9260008B52B2 /* Fia_Alerts.xcdatamodel */,
+			);
+			currentVersion = A61D70AB1FCC9260008B52B2 /* Fia_Alerts.xcdatamodel */;
+			path = Fia_Alerts.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A61D70981FCC9260008B52B2 /* Project object */;
+}

@@ -3,13 +3,19 @@
 const json2xml = require('json2xml');
 const _ = require('lodash');
 
-function constructArea(payload) {
-	return _.map(payload.alert.location, (location) => {
+function constructAreas(payload) {
+	const points = _.map(payload.alert.location, (location) => {
 		const circleVal = location.lat+","+location.lon+" "+payload.alert.locationParams.radius;
 		return {
 			circle : circleVal 
 		}
-	})
+	});
+
+	return {
+		areaDesc: "descrption",
+		circles: points
+	};
+
 }
 
 //module.exports.produceCap = (event, context, callback) => {
@@ -17,11 +23,17 @@ function constructArea(payload) {
 
 		const testAlertJson = {
 			"alert": {
-				"category": "security",
+				"identifier" : "abcabbacd",
+				"sender": "nitor-rptf-team",
+				"sent": "2003-06-11T20:56:00-07:00",
+				"status": "Actual",
+				"category": "Security",
 				"event": "disaster event",
-				"urgency": "immediate",
+				"urgency": "Immediate",
 				"severity": "Severe",
 				"certainty": "Likely",
+				"msgType": "Alert",
+				"scope": "Public",
 				"senderName": "Nitor RPTF",
 				"headline" : "There's ongoing hackathon event",
 				"description" : "There's ongoing hackathon. Expect really cool stuff. This is going to be huge",
@@ -53,9 +65,7 @@ function constructArea(payload) {
 				"time": "2017-11-26T10:34:56.123Z"
 			}
 		}
-		console.log("yaya");
-
-		//TODO implement parsing of localized alert infos, now only taking the first one
+		//TODO implement parsing of localized alert infos to support differeng langs, now only taking the first one
 		/*
 		const capInfo = _.map(testAlertJson.alert.description, (localInfo) => {
 			console.log("1:", localInfo)
@@ -67,7 +77,7 @@ function constructArea(payload) {
 		*/
 		const localizedDescription = (testAlertJson.alert.description) ? testAlertJson.alert.description[0] : null;
 		
-		const area = constructArea(testAlertJson);
+		const areas = constructAreas(testAlertJson);
 
 		const capInfo = {
 			language: localizedDescription.language,
@@ -78,7 +88,7 @@ function constructArea(payload) {
 			certainty: testAlertJson.alert.certainty,
 			senderName: testAlertJson.alert.senderName,
 			headline: testAlertJson.alert.headline,
-			area: area //TODO add support for multiple areas if needed. Currently we aggregate all points to one area
+			area: areas //TODO add support for multiple areas if needed. Currently we aggregate all points to one area
 		}
 		console.log("capInfo", capInfo);
 
@@ -87,15 +97,19 @@ function constructArea(payload) {
 				identifier: testAlertJson.alert.identifier,
 				sender: testAlertJson.alert.sender,
 				sent: testAlertJson.alert.sent,
-				status: testAlertJson.alert.actual,
+				status: testAlertJson.alert.status,
 				msgType: testAlertJson.alert.msgType,
 				scope: testAlertJson.alert.scope,
 				info: capInfo
 			},
-			attr : { namespace : 'lol'}
+			attr : { xmlns : 'urn:oasis:names:tc:emergency:cap:1.2'}
 
 		};
-		console.log(json2xml(capXml, { header: true, attributes_key: 'attr' }));
+		let xmlOutput = json2xml(capXml, { header: true, attributes_key: 'attr' });
+		//hackathlon style
+		xmlOutput = xmlOutput.replace('<circles>', '');
+		xmlOutput = xmlOutput.replace('</circles>', '');
+		console.log(xmlOutput);
 
 	};
 

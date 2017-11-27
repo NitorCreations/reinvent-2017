@@ -1,5 +1,4 @@
 'use strict';
-
 const json2xml = require('json2xml');
 const _ = require('lodash');
 
@@ -18,102 +17,88 @@ function constructAreas(payload) {
 
 }
 
-//module.exports.produceCap = (event, context, callback) => {
-	function produceCap () {
-
-		const testAlertJson = {
-			"alert": {
-				"identifier" : "abcabbacd",
-				"sender": "nitor-rptf-team",
-				"sent": "2003-06-11T20:56:00-07:00",
-				"status": "Actual",
-				"category": "Security",
-				"event": "disaster event",
-				"urgency": "Immediate",
-				"severity": "Severe",
-				"certainty": "Likely",
-				"msgType": "Alert",
-				"scope": "Public",
-				"senderName": "Nitor RPTF",
-				"headline" : "There's ongoing hackathon event",
-				"description" : "There's ongoing hackathon. Expect really cool stuff. This is going to be huge",
-				"instruction" : "Code until you drop",
-				"locationType" : "circle", //TODO, only supports circle for now
-				"locationParams" : {
-					radius : "1"
-				},
-				"location": [
-				{
-					"lon": 25.6,
-					"lat": 60.0
-				}, 
-				{
-					"lon": 24.6,
-					"lat": 61.0
-				}
-				],
-				"description": [
-				{
-					language: "en-us",
-					text : "this is sparta"
-				}, 
-				{
-					language : "es-US",
-					text : "this is spanish sparta"
-				}
-				],
-				"time": "2017-11-26T10:34:56.123Z"
-			}
-		}
-		//TODO implement parsing of localized alert infos to support differeng langs, now only taking the first one
-		/*
-		const capInfo = _.map(testAlertJson.alert.description, (localInfo) => {
-			console.log("1:", localInfo)
-			return  {
-				language : localInfo.language,
-				description : localInfo.text
-			}
-		});
-		*/
-		const localizedDescription = (testAlertJson.alert.description) ? testAlertJson.alert.description[0] : null;
-		
-		const areas = constructAreas(testAlertJson);
-
-		const capInfo = {
-			language: localizedDescription.language,
-			category: testAlertJson.alert.category,
-			event: testAlertJson.alert.event,
-			urgency: testAlertJson.alert.urgency,
-			severity: testAlertJson.alert.severity,
-			certainty: testAlertJson.alert.certainty,
-			senderName: testAlertJson.alert.senderName,
-			headline: testAlertJson.alert.headline,
-			area: areas //TODO add support for multiple areas if needed. Currently we aggregate all points to one area
-		}
-		console.log("capInfo", capInfo);
-
-		const capXml = {
-			alert : {
-				identifier: testAlertJson.alert.identifier,
-				sender: testAlertJson.alert.sender,
-				sent: testAlertJson.alert.sent,
-				status: testAlertJson.alert.status,
-				msgType: testAlertJson.alert.msgType,
-				scope: testAlertJson.alert.scope,
-				info: capInfo
+module.exports.produceCap = (event, context, callback) => {
+	const testAlertJson = {
+		"alert": {
+			"identifier" : "abcabbacd",
+			"sender": "nitor-rptf-team",
+			"sent": "2003-06-11T20:56:00-07:00",
+			"status": "Actual",
+			"category": "Security",
+			"event": "disaster event",
+			"urgency": "Immediate",
+			"severity": "Severe",
+			"certainty": "Likely",
+			"msgType": "Alert",
+			"scope": "Public",
+			"senderName": "Nitor RPTF",
+			"headline" : "There's ongoing hackathon event",
+			"description" : "There's ongoing hackathon. Expect really cool stuff. This is going to be huge",
+			"instruction" : "Code until you drop",
+			"locationType" : "circle",
+			"locationParams" : {
+				radius : "1"
 			},
-			attr : { xmlns : 'urn:oasis:names:tc:emergency:cap:1.2'}
+			"location": [
+			{
+				"lon": 25.6,
+				"lat": 60.0
+			}, 
+			{
+				"lon": 24.6,
+				"lat": 61.0
+			}
+			],
+			"description": [
+			{
+				language: "en-us",
+				text : "this is sparta"
+			}, 
+			{
+				language : "es-US",
+				text : "this is spanish sparta"
+			}
+			],
+			"time": "2017-11-26T10:34:56.123Z"
+		}
+	}
 
-		};
-		let xmlOutput = json2xml(capXml, { header: true, attributes_key: 'attr' });
-		//hackathlon style
-		xmlOutput = xmlOutput.replace('<circles>', '');
-		xmlOutput = xmlOutput.replace('</circles>', '');
-		console.log(xmlOutput);
+	const localizedDescription = (testAlertJson.alert.description) ? testAlertJson.alert.description[0] : null;
+
+	const areas = constructAreas(testAlertJson);
+
+	const capInfo = {
+		language: localizedDescription.language,
+		category: testAlertJson.alert.category,
+		event: testAlertJson.alert.event,
+		urgency: testAlertJson.alert.urgency,
+		severity: testAlertJson.alert.severity,
+		certainty: testAlertJson.alert.certainty,
+		senderName: testAlertJson.alert.senderName,
+		headline: testAlertJson.alert.headline,
+		area: areas 
+	}
+	console.log("capInfo", capInfo);
+
+	const capXml = {
+		alert : {
+			identifier: testAlertJson.alert.identifier,
+			sender: testAlertJson.alert.sender,
+			sent: testAlertJson.alert.sent,
+			status: testAlertJson.alert.status,
+			msgType: testAlertJson.alert.msgType,
+			scope: testAlertJson.alert.scope,
+			info: capInfo
+		},
+		attr : { xmlns : 'urn:oasis:names:tc:emergency:cap:1.2'}
 
 	};
+	let xmlOutput = json2xml(capXml, { header: true, attributes_key: 'attr' });
+	xmlOutput = xmlOutput.replace('<circles>', '');
+	xmlOutput = xmlOutput.replace('</circles>', '');
+	console.log(xmlOutput);
 
-	produceCap();
+};
 
 /*
 <identifier>TRI13970876.2</identifier> 

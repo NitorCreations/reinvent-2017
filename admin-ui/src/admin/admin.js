@@ -4,17 +4,19 @@ import { RaisedButton, TextField } from 'material-ui'
 import config from '../config.js'
 import * as _ from 'lodash'
 import MapDisplay from '../map-display/map-display'
+import List, { ListItem } from 'material-ui/List';
 
 class Admin extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
+      isApprovedExpanded: false,
+      isDiscardedExpanded: false,
+      isNewExpanded: true
     }
   }
 
   render() {
-
     const alert = {
       "type": "security",
       "location": {
@@ -25,9 +27,9 @@ class Admin extends Component {
       "time": "2017-11-26T10:34:56.123Z"
     }
 
-    const discarded = _.map([alert, alert], (x) => (<div>{x.description}</div>))
-    const approved = _.map([alert, alert], (x) => (<div>{x.description}</div>))
-    const newalerts = _.map([alert, alert], (x) => (<div>{x.description}</div>))
+    const discarded = _.map([alert, alert], (x, i) => (<ListItem key={i}>{x.description}</ListItem>))
+    const approved = _.map([alert, alert], (x, i) => (<ListItem key={i}>{x.description}</ListItem>))
+    const newalerts = _.map([alert, alert], (x, i) => (<ListItem key={i}>{x.description}</ListItem>))
 
     const positions = [
       { lat: 36.1212, lng: -115.1697 },
@@ -41,19 +43,33 @@ class Admin extends Component {
           </div>
 
           <div className="left col-12 p2">
-            <h2>New alerts</h2>
-            {newalerts}
+            <h2 className="text-red clickable" onClick={() => this.setState({ isNewExpanded: !this.state.isNewExpanded})}>
+              New alerts
+              <span class="text-small text-dark"> ({newalerts.length})</span>
+            </h2>
+            { this.state.isNewExpanded && (<List dense="true">
+              {newalerts}
+            </List>) }
           </div>
 
           <div className="left col-12 p2">
-            <h2>Approved alerts</h2>
-            {approved}
+            <h2 className="text-red clickable" onClick={() => this.setState({ isApprovedExpanded: !this.state.isApprovedExpanded})}>
+              Approved alerts
+              <span class="text-small text-dark"> ({approved.length})</span>
+            </h2>
+            { this.state.isApprovedExpanded && (<List dense="true">
+              {approved}
+            </List>) }
           </div>
 
           <div className="left col-12 p2">
-            <h2>Discarded alerts</h2>
-            {discarded}
-
+            <h2 className="text-red clickable" onClick={() => this.setState({ isDiscardedExpanded: !this.state.isDiscardedExpanded})}>
+              Discarded alerts
+              <span class="text-small text-dark"> ({discarded.length})</span>
+            </h2>
+            { this.state.isDiscardedExpanded && (<List dense="true">
+              {discarded}
+            </List>) }
           </div>
 
         </div>

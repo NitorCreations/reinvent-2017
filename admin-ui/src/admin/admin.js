@@ -30,17 +30,27 @@ class Admin extends Component {
       isApprovedExpanded: false,
       isDiscardedExpanded: false,
       isNewExpanded: true,
-      selected: null
+      selected: null,
+      pending: [],
+      approved: [],
+      discarded: []
     }
 
     this.approve = this.approve.bind(this)
     this.discard = this.discard.bind(this)
+
+    listPendingAlerts(props.AWS)
+      .then(pending => {
+        _.each(pending, item => geoReverse(item).then(geo => {
+          item.geo = geo
+          const pending = _.orderBy([ ...this.state.pending, item ], 'time')
+          this.setState({ pending })
+        }))
+      })
   }
 
   select(item) {
-    this.setState({
-      selected: item
-    })
+    this.setState({ selected: item })
   }
 
   approve(event, item = this.state.selected) {
@@ -102,26 +112,26 @@ class Admin extends Component {
   }
 
   render() {
-    // TODO 
-    listPendingAlerts(this.props.AWS)
-      .then(data => {
-        console.info('listPendingAlerts', data)
-      }, err => {
-        console.error('listPendingAlerts', err)
-      })
+    const makeListItem = (item, index) => {
+      const types = {
+        security: 'sec',
+        fire: 'fire'
+      }
 
-    const discarded = _.map([alert, alert2], (x, i) => (<ListItem key={i}
-      onClick={this.select.bind(this, x)}>
-      {x.description}
-    </ListItem>))
-    const approved = _.map([alert, alert2], (x, i) => (<ListItem key={i}
-      onClick={this.select.bind(this, x)}>
-      {x.description}
-    </ListItem>))
-    const newalerts = _.map([alert, alert2], (x, i) => (<ListItem key={i}
-      onClick={this.select.bind(this, x)}>
-      {x.description}
-    </ListItem>))
+      const type = types[item.type] || item.type
+      const loc = `${_.get(item, 'geo.address.state')}, ${_.get(item, 'geo.address.country_code', '').toUpperCase()}`
+
+      return (<ListItem key={index}
+        onClick={this.select.bind(this, item)}>
+        <span className="tag text-small text-white bg-black mr1">{ type }</span>
+        <span className="bold mr1">{loc}</span>
+        <span className="text-smaller">{item.time}</span>
+      </ListItem>)
+    }
+
+    const discarded = _.map(this.state.discarded, makeListItem)
+    const approved = _.map(this.state.approved, makeListItem)
+    const pending = _.map(this.state.pending, makeListItem)
 
     const positions = [{
       lat: _.get(this.state.selected, 'lat'),
@@ -139,10 +149,10 @@ class Admin extends Component {
           <div className="left col-12 p2">
             <h2 className="text-red clickable m0" onClick={() => this.setState({ isNewExpanded: !this.state.isNewExpanded})}>
               New alerts
-              <span className="text-small text-dark"> ({newalerts.length})</span>
+              <span className="text-small text-dark"> ({pending.length})</span>
             </h2>
             { this.state.isNewExpanded && (<List dense="true">
-              {newalerts}
+              {pending}
             </List>) }
           </div>
 
@@ -175,7 +185,7 @@ class Admin extends Component {
               <div className="left col-12 mb2">
                 <h3 className="m0 mb2">
                   Waiting for approval: {this.state.selected.description}
-                  <span className="right text-red mt1 text-small uppercase" onClick={this.discard}>discard</span>
+                  <span className="right text-red mt1 text-small uppercase clickable" onClick={this.discard}>discard</span>
                 </h3>
                 <div>
                   <span className="bold">Time sent: </span>
@@ -190,7 +200,7 @@ class Admin extends Component {
               <div className="left col-8 mb2">
                 <div className="mb1">
                   <span className="bold">Location: </span>
-                  TODO
+                  { this.state.selected.geo.display_name }
                 </div>
                 <MapDisplay
                   positions={positions}

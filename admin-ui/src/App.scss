@@ -1,6 +1,10 @@
 @import 'styles/_variables';
 @import 'styles/_typography';
 
+* {
+  box-sizing: border-box;
+}
+
 .App {
   margin: 0 auto;
   max-width: 1260px;

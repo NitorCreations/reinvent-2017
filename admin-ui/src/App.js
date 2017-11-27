@@ -4,6 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import AwsLogin from './aws-login/aws-login'
 import AppNav from './app-nav/app-nav'
+import Admin from './admin/admin'
 
 import './App.css';
 import { BrowserRouter, Route } from 'react-router-dom'
@@ -59,7 +60,7 @@ class App extends Component {
             <div>
               <AppNav />
               <Switch>
-                <Route exact path="/" component={AwsLogin}/>
+                <Route exact path="/" component={Admin}/>
                 {/* without the exact this matches /tacos/* */}
                 <Route path="/login" component={AwsLogin}/>
                 { /* No match 404 */}

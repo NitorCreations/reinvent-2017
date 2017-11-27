@@ -112,6 +112,16 @@ functions:
       - http:
           path: alert/image
           method: post
+  getAlerts:
+    handler: cap-producer.produceCap
+    events:
+     - http:
+          path: alert/get/{alertId}
+          method: get
+          request:
+            parameters:
+              paths:
+                alertId: true
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events

@@ -1,6 +1,7 @@
 'use strict';
 const json2xml = require('json2xml');
 const _ = require('lodash');
+const AWS = require('aws-sdk');
 
 function constructAreas(payload) {
 	const points = _.map(payload.alert.location, (location) => {
@@ -17,56 +18,9 @@ function constructAreas(payload) {
 
 }
 
-module.exports.produceCap = (event, context, callback) => {
-	const testAlertJson = {
-		"alert": {
-			"identifier" : "abcabbacd",
-			"sender": "nitor-rptf-team",
-			"sent": "2003-06-11T20:56:00-07:00",
-			"status": "Actual",
-			"category": "Security",
-			"event": "disaster event",
-			"urgency": "Immediate",
-			"severity": "Severe",
-			"certainty": "Likely",
-			"msgType": "Alert",
-			"scope": "Public",
-			"senderName": "Nitor RPTF",
-			"headline" : "There's ongoing hackathon event",
-			"description" : "There's ongoing hackathon. Expect really cool stuff. This is going to be huge",
-			"instruction" : "Code until you drop",
-			"locationType" : "circle",
-			"locationParams" : {
-				radius : "1"
-			},
-			"location": [
-			{
-				"lon": 25.6,
-				"lat": 60.0
-			}, 
-			{
-				"lon": 24.6,
-				"lat": 61.0
-			}
-			],
-			"description": [
-			{
-				language: "en-us",
-				text : "this is sparta"
-			}, 
-			{
-				language : "es-US",
-				text : "this is spanish sparta"
-			}
-			],
-			"time": "2017-11-26T10:34:56.123Z"
-		}
-	}
-
+function createXmlFromAlert (testAlertJson, callback) {
 	const localizedDescription = (testAlertJson.alert.description) ? testAlertJson.alert.description[0] : null;
-
 	const areas = constructAreas(testAlertJson);
-
 	const capInfo = {
 		language: localizedDescription.language,
 		category: testAlertJson.alert.category,
@@ -97,7 +51,36 @@ module.exports.produceCap = (event, context, callback) => {
 	xmlOutput = xmlOutput.replace('<circles>', '');
 	xmlOutput = xmlOutput.replace('</circles>', '');
 	console.log(xmlOutput);
+	const response = {
+		statusCode: 200,
+		headers: {
+			'Content-Type': 'text/xml'
+		},
+		body: xmlOutput
+	}
+	callback(null, response);
+}
 
+module.exports.produceCap = (event, context, callback) => {
+	console.log("event", JSON.stringify(event));
+	const db = new AWS.DynamoDB.DocumentClient();
+	let testAlertJson;
+	var params = {
+		Key: {
+			id: event.pathParameters.alertId
+		}, 
+		TableName: process.env.APPROVED_ALERTS_TABLE
+	};
+	db.get(params, function(err, data) {
+		if (err) console.log(err, err.stack); 
+		else
+		{     
+			console.log("got data",data);
+			testAlertJson = data.Item;
+			console.log("data", JSON.stringify(testAlertJson));
+			createXmlFromAlert(testAlertJson, callback);
+		}
+	});
 };
 
 /*

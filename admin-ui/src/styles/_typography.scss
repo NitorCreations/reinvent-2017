@@ -1,0 +1,28 @@
+// typography
+@font-face {
+  font-family: 'IndustryInc-Base';
+  src: url('/fonts/IndustryInc-base.eot');
+  src: url('/fonts/IndustryInc-base.eot?#iefix') format('embedded-opentype'), url('/fonts/IndustryInc-base.woff2') format('woff2'), url('/fonts/IndustryInc-base.woff') format('woff'), url('/fonts/IndustryInc-base.ttf') format('truetype');
+}
+
+@mixin industry() {
+  font-family: 'IndustryInc-Base', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2 {
+  @include industry();
+}
+
+h3, h4, h5, h6 {
+  font-size: 17px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}

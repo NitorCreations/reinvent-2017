@@ -20,7 +20,7 @@ class Admin extends Component {
       isApprovedExpanded: false,
       isDiscardedExpanded: false,
       isNewExpanded: true,
-      selected: alert
+      selected: null
     }
 
     this.approve = this.approve.bind(this)
@@ -58,7 +58,6 @@ class Admin extends Component {
         urgency,
         severity,
         certainty,
-        description,
         instruction,
         time,
         "msgType": "Alert",

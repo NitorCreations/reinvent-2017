@@ -5,6 +5,7 @@ import * as _ from 'lodash'
 import MapDisplay from '../map-display/map-display'
 import List, { ListItem } from 'material-ui/List';
 import { listPendingAlerts, geoReverse } from './api'
+import { CATEGORIES, SEVERITIES, URGENCIES, CERTAINTIES } from './static-data'
 
 class Admin extends Component {
   constructor(props) {
@@ -204,31 +205,31 @@ class Admin extends Component {
                 maybe, we'll see.
               </div>
 
-              <div className="left col-8 mb2">
+              <div className="left col-12 mb2">
                 <div className="mb1 bold">Category</div>
                 <RadioButtonGroup name="category" onChange={this.updateField.bind(this, 'category')}>
-                  { _.times(5, (i) => (<RadioButton value={i} label={`Category ${i + 1}` } key={i} />)) }
+                  { _.map(CATEGORIES, (item) => (<RadioButton value={item} label={item} key={item} />)) }
                 </RadioButtonGroup>
               </div>
 
-              <div className="left col-8 mb2">
+              <div className="left col-12 mb2">
                 <div className="mb1 bold">Severity</div>
                 <RadioButtonGroup name="severity" onChange={this.updateField.bind(this, 'severity')}>
-                  { _.times(5, (i) => (<RadioButton value={i} label={`Severity ${i + 1}` } key={i} />)) }
+                  { _.map(SEVERITIES, (item) => (<RadioButton value={item} label={item} key={item} />)) }
                 </RadioButtonGroup>
               </div>
 
-              <div className="left col-8 mb2">
+              <div className="left col-12 mb2">
                 <div className="mb1 bold">Urgency</div>
                 <RadioButtonGroup name="urgency" onChange={this.updateField.bind(this, 'urgency')}>
-                  { _.times(5, (i) => (<RadioButton value={i} label={`Urgency ${i + 1}` } key={i} />)) }
+                  { _.map(URGENCIES, (item) => (<RadioButton value={item} label={item} key={item} />)) }
                 </RadioButtonGroup>
               </div>
 
-              <div className="left col-8 mb2">
+              <div className="left col-12 mb2">
                 <div className="mb1 bold">Certainty</div>
                 <RadioButtonGroup name="certainty" onChange={this.updateField.bind(this, 'certainty')}>
-                  { _.times(5, (i) => (<RadioButton value={i} label={`Certainty ${i + 1}` } key={i} />)) }
+                  { _.map(CERTAINTIES, (item) => (<RadioButton value={item} label={item} key={item} />)) }
                 </RadioButtonGroup>
               </div>
 

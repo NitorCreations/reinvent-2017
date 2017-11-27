@@ -1,9 +1,17 @@
 import React, { Component } from 'react'
 import './admin.css'
-import { RaisedButton, TextField } from 'material-ui'
+import { RadioButton, RadioButtonGroup, RaisedButton, TextField } from 'material-ui'
 import * as _ from 'lodash'
 import MapDisplay from '../map-display/map-display'
 import List, { ListItem } from 'material-ui/List';
+
+const alert = {
+  "type": "security",
+  "lon": -115.1697,
+  "lat": 36.1212,
+  "description": "this is sparta",
+  "time": "2017-11-26T10:34:56.123Z"
+}
 
 class Admin extends Component {
   constructor(props) {
@@ -12,7 +20,7 @@ class Admin extends Component {
       isApprovedExpanded: false,
       isDiscardedExpanded: false,
       isNewExpanded: true,
-      selected: null
+      selected: alert
     }
 
     this.approve = this.approve.bind(this)
@@ -25,8 +33,50 @@ class Admin extends Component {
     })
   }
 
-  approve(item = this.state.selected) {
-    console.log('approve', item)
+  approve(event, item = this.state.selected) {
+    const {
+      time,
+      category,
+      urgency,
+      severity,
+      certainty,
+      description,
+      instruction,
+      lat,
+      lon
+    } = item
+
+    const data = {
+      "alert": {
+        "identifier" : "abcabbacd",
+        "sender": "nitor-rptf-team",
+        "senderName": "Nitor RPTF",
+        "sent": (new Date()).toISOString(),
+        "status": "Actual",
+        "event": "disaster event",
+        category,
+        urgency,
+        severity,
+        certainty,
+        description,
+        instruction,
+        time,
+        "msgType": "Alert",
+        "scope": "Public",
+        "headline" : "There's ongoing hackathon event",
+        "locationType" : "circle",
+        "locationParams" : {
+          radius : "1"
+        },
+        "location": [{ lon, lat }],
+        "description": [{
+          language: "en-us",
+          text : description
+        }]
+      }
+    }
+
+    console.log(data)
   }
 
   discard(item = this.state.selected) {
@@ -38,15 +88,11 @@ class Admin extends Component {
     window.location = '/'
   }
 
-  render() {
-    const alert = {
-      "type": "security",
-      "lon": -115.1697,
-      "lat": 36.1212,
-      "description": "this is sparta",
-      "time": "2017-11-26T10:34:56.123Z"
-    }
+  updateField(field, event, value) {
+    this.select(Object.assign({}, this.state.selected, { [field]: value }))
+  }
 
+  render() {
     const discarded = _.map([alert, alert], (x, i) => (<ListItem key={i}
       onClick={this.select.bind(this, x)}>
       {x.description}
@@ -109,24 +155,82 @@ class Admin extends Component {
         { this.state.selected && (
           <div className="left col-8 p2">
 
-            <div className="left col-12 mb2">
-              <div>Description: {this.state.selected.description}</div>
-              <div>Type: {this.state.selected.type}</div>
-              <div>Time: {this.state.selected.time}</div>
-            </div>
+            <div className="card p2">
+              <div className="left col-12 mb2">
+                <h3 className="m0 mb2">
+                  Waiting for approval: {this.state.selected.description}
+                  <span className="right text-red mt1 text-small uppercase" onClick={this.discard}>discard</span>
+                </h3>
+                <div>
+                  <span className="bold">Time sent: </span>
+                  {this.state.selected.time}
+                </div>
+                <div>
+                  <span className="bold">From: </span>
+                  someone@someplace.com
+                </div>
+              </div>
 
-            <div className="left col-12 mb2">
-              <RaisedButton label="Approve" primary={true} onClick={this.approve} />
-              <RaisedButton label="Discard" onClick={this.discard} className="ml1" />
-            </div>
+              <div className="left col-8 mb2">
+                <div className="mb1">
+                  <span className="bold">Location: </span>
+                  TODO
+                </div>
+                <MapDisplay
+                  positions={positions}
+                  googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKUDBJCrNjL5cpZmqugqjQL8ydWNidX7M&v=3.exp&libraries=geometry,drawing,places"
+                  loadingElement={<div style={{ height: `100%` }} />}
+                  containerElement={<div style={{ height: `200px` }} />}
+                  mapElement={<div style={{ height: `100%` }} />} />
+              </div>
 
-            <div className="left col-12">
-              <MapDisplay
-                positions={positions}
-                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKUDBJCrNjL5cpZmqugqjQL8ydWNidX7M&v=3.exp&libraries=geometry,drawing,places"
-                loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div style={{ height: `400px` }} />}
-                mapElement={<div style={{ height: `100%` }} />} />
+              <div className="left col-8 mb2">
+                <div className="mb1 bold">description</div>
+                description goes here
+              </div>
+
+              <div className="left col-8 mb2">
+                <div className="mb1 bold">Image</div>
+                maybe, we'll see.
+              </div>
+
+              <div className="left col-8 mb2">
+                <div className="mb1 bold">Category</div>
+                <RadioButtonGroup name="category" onChange={this.updateField.bind(this, 'category')}>
+                  { _.times(5, (i) => (<RadioButton value={i} label={`Category ${i + 1}` } key={i} />)) }
+                </RadioButtonGroup>
+              </div>
+
+              <div className="left col-8 mb2">
+                <div className="mb1 bold">Severity</div>
+                <RadioButtonGroup name="severity" onChange={this.updateField.bind(this, 'severity')}>
+                  { _.times(5, (i) => (<RadioButton value={i} label={`Severity ${i + 1}` } key={i} />)) }
+                </RadioButtonGroup>
+              </div>
+
+              <div className="left col-8 mb2">
+                <div className="mb1 bold">Urgency</div>
+                <RadioButtonGroup name="urgency" onChange={this.updateField.bind(this, 'urgency')}>
+                  { _.times(5, (i) => (<RadioButton value={i} label={`Urgency ${i + 1}` } key={i} />)) }
+                </RadioButtonGroup>
+              </div>
+
+              <div className="left col-8 mb2">
+                <div className="mb1 bold">Certainty</div>
+                <RadioButtonGroup name="certainty" onChange={this.updateField.bind(this, 'certainty')}>
+                  { _.times(5, (i) => (<RadioButton value={i} label={`Certainty ${i + 1}` } key={i} />)) }
+                </RadioButtonGroup>
+              </div>
+
+              <div className="left col-8 mb2">
+                <div className="mb1 bold">Instructions</div>
+                Instructions go here
+              </div>
+
+              <div className="left col-12">
+                <RaisedButton label="Approve" primary={true} onClick={this.approve} className="right" />
+                <RaisedButton label="Discard" onClick={this.discard} className="right ml1" />
+              </div>
             </div>
 
           </div>)

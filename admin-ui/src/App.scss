@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 
+body {
+  background: $gray-light;
+  color: $gray;
+}
+
 .App {
   margin: 0 auto;
   max-width: 1260px;
@@ -56,3 +61,8 @@
 .clickable {
   cursor: pointer;
 }
+
+.bold {
+
+}
+

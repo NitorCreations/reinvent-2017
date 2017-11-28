@@ -20,7 +20,8 @@ class Admin extends Component {
       selected: null,
       pending: [],
       approved: [],
-      discarded: []
+      discarded: [],
+      done: false
     }
 
     this.approve = this.approve.bind(this)
@@ -85,7 +86,7 @@ class Admin extends Component {
 
     console.log(data)
 
-    approveAlert(item).then(() => this.setState({
+    approveAlert(this.props.AWS, item).then(() => this.setState({
       pending: _.without(this.state.pending, item),
       approved: [ item, ...this.state.discarded ],
       done: true,
@@ -95,7 +96,7 @@ class Admin extends Component {
 
   discard() {
     const item = this.state.selected
-    rejectAlert(item).then(() => this.setState({
+    rejectAlert(this.props.AWS, item).then(() => this.setState({
       pending: _.without(this.state.pending, item),
       discarded: [ item, ...this.state.discarded ],
       done: true,

@@ -45,8 +45,8 @@ export const listPendingAlerts = (AWS) => {
 export const approveAlert = (AWS, alert) => {
   alert.status = 'approved'
   const docClient = new AWS.DynamoDB.DocumentClient();
-  docClient.putItem({TableName: window.config.aws.dynamoPendingAlerts, Item: alert}, (err, data) => {
-    return new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
+    docClient.put({TableName: window.config.aws.dynamoPendingAlerts, Item: alert}, (err, data) => {
         if (err) {
           console.error('Failed to mark alert approved', err)
           reject(err)
@@ -64,8 +64,8 @@ export const approveAlert = (AWS, alert) => {
 export const rejectAlert = (AWS, alert) => {
   alert.status = 'rejected'
   const docClient = new AWS.DynamoDB.DocumentClient();
-  docClient.putItem({TableName: window.config.aws.dynamoPendingAlerts, Item: alert}, (err, data) => {
-    return new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
+    docClient.put({TableName: window.config.aws.dynamoPendingAlerts, Item: alert}, (err, data) => {
         if (err) {
           console.error('Failed to mark alert rejected', err)
           reject(err)
@@ -76,7 +76,6 @@ export const rejectAlert = (AWS, alert) => {
       }
     )
   })
-  console.error('rejectAlert is not implemented yet')
 }
 
 export const geoReverse = ({ lat, lon }) => {

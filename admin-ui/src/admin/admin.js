@@ -5,7 +5,7 @@ import * as _ from 'lodash'
 import MapDisplay from '../map-display/map-display'
 import List, { ListItem } from 'material-ui/List';
 import FontIcon from 'material-ui/FontIcon';
-import { listPendingAlerts, rejectAlert, approveAlert, geoReverse } from './api'
+import { listPendingAlerts, listApprovedAlerts, listRejectedAlerts, rejectAlert, approveAlert, geoReverse } from './api'
 import { CATEGORIES, SEVERITIES, URGENCIES, CERTAINTIES } from './static-data'
 import Snackbar from 'material-ui/Snackbar';
 
@@ -27,14 +27,22 @@ class Admin extends Component {
     this.approve = this.approve.bind(this)
     this.discard = this.discard.bind(this)
 
+    const updateList = (list, data) => {
+      _.each(data, item => geoReverse(item).then(geo => {
+        item.geo = geo
+        const items = _.orderBy([ ...this.state[list], item ], 'time')
+        this.setState({ [list]: items })
+      }))
+    }
+
     listPendingAlerts(props.AWS)
-      .then(pending => {
-        _.each(pending, item => geoReverse(item).then(geo => {
-          item.geo = geo
-          const pending = _.orderBy([ ...this.state.pending, item ], 'time')
-          this.setState({ pending })
-        }))
-      })
+      .then(updateList.bind(this, 'pending'))
+
+    listApprovedAlerts(props.AWS)
+      .then(updateList.bind(this, 'approved'))
+
+    listRejectedAlerts(props.AWS)
+      .then(updateList.bind(this, 'discarded'))
   }
 
   select(item) {

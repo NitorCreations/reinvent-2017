@@ -17,7 +17,7 @@ module.exports.getStyleXsl = (event, context, callback) => {
 <td class="label">Message:</td>
 <td>
 <xsl:value-of select="cap:identifier/text()"/>
-<span class="tiny">from</span>
+<span class="tiny"> from </span>
 <xsl:value-of select="cap:sender/text()"/>
 </td>
 </tr>
@@ -25,36 +25,12 @@ module.exports.getStyleXsl = (event, context, callback) => {
 <td class="label">Sent:</td>
 <td>
 <xsl:value-of select="substring(normalize-space(cap:sent/text()), 12, 5)"/>
-<span class="tiny">on</span>
+<span class="tiny"> on </span>
 <xsl:value-of select="substring(normalize-space(cap:sent/text()), 6, 2)"/>
 -
 <xsl:value-of select="substring(normalize-space(cap:sent/text()), 9, 2)"/>
 -
 <xsl:value-of select="substring(normalize-space(cap:sent/text()), 1, 4)"/>
-</td>
-</tr>
-<tr>
-<td class="label">Effective:</td>
-<td>
-<xsl:value-of select="substring(normalize-space(cap:info/cap:effective/text()), 12, 5)"/>
-<span class="tiny">on</span>
-<xsl:value-of select="substring(normalize-space(cap:info/cap:effective/text()), 6, 2)"/>
--
-<xsl:value-of select="substring(normalize-space(cap:info/cap:effective/text()), 9, 2)"/>
--
-<xsl:value-of select="substring(normalize-space(cap:info/cap:effective/text()), 1, 4)"/>
-</td>
-</tr>
-<tr>
-<td class="label">Expires:</td>
-<td>
-<xsl:value-of select="substring(normalize-space(cap:info/cap:expires/text()), 12, 5)"/>
-<span class="tiny">on</span>
-<xsl:value-of select="substring(normalize-space(cap:info/cap:expires/text()), 6, 2)"/>
--
-<xsl:value-of select="substring(normalize-space(cap:info/cap:expires/text()), 9, 2)"/>
--
-<xsl:value-of select="substring(normalize-space(cap:info/cap:expires/text()), 1, 4)"/>
 </td>
 </tr>
 <tr>
@@ -64,6 +40,12 @@ module.exports.getStyleXsl = (event, context, callback) => {
 <td class="label">Event:</td>
 <td class="headline">
 <xsl:value-of select="cap:info/cap:event/text()"/>
+</td>
+</tr>
+<tr>
+<td class="label">Headline:</td>
+<td class="headline">
+<xsl:value-of select="cap:info/cap:headline/text()"/>
 </td>
 </tr>
 <tr>

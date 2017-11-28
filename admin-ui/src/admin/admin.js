@@ -8,7 +8,7 @@ import FontIcon from 'material-ui/FontIcon';
 import { listPendingAlerts, listApprovedAlerts, listRejectedAlerts, rejectAlert, approveAlert, geoReverse } from './api'
 import { CATEGORIES, SEVERITIES, URGENCIES, CERTAINTIES } from './static-data'
 import Snackbar from 'material-ui/Snackbar';
-import { moment } from 'moment';
+import * as moment from 'moment';
 
 class Admin extends Component {
   constructor(props) {

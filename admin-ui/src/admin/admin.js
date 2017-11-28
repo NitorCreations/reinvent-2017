@@ -26,22 +26,27 @@ class Admin extends Component {
 
     this.approve = this.approve.bind(this)
     this.discard = this.discard.bind(this)
+    this.fetchLists = this.fetchLists.bind(this)
+    this.fetchLists()
+  }
 
+  fetchLists() {
     const updateList = (list, data) => {
-      _.each(data, item => geoReverse(item).then(geo => {
-        item.geo = geo
-        const items = _.orderBy([ ...this.state[list], item ], 'time')
-        this.setState({ [list]: items })
-      }))
+      Promise.all(_.map(data, item => {
+        return geoReverse(item).then(geo => {
+          item.geo = geo
+          return item
+        })
+      })).then(items => this.setState({ [list]: items }))
     }
 
-    listPendingAlerts(props.AWS)
+    listPendingAlerts(this.props.AWS)
       .then(updateList.bind(this, 'pending'))
 
-    listApprovedAlerts(props.AWS)
+    listApprovedAlerts(this.props.AWS)
       .then(updateList.bind(this, 'approved'))
 
-    listRejectedAlerts(props.AWS)
+    listRejectedAlerts(this.props.AWS)
       .then(updateList.bind(this, 'discarded'))
   }
 
@@ -65,6 +70,7 @@ class Admin extends Component {
     } = item
 
     const data = {
+      "id": id,
       "alert": {
         "identifier" : id,
         "sender": "nitor-rptf-team",
@@ -93,22 +99,24 @@ class Admin extends Component {
       }
     }
 
-    approveAlert(this.props.AWS, item, this.state.selected).then(() => this.setState({
-      pending: _.without(this.state.pending, item),
-      approved: [ item, ...this.state.discarded ],
-      done: true,
-      selected: null
-    }))
+    approveAlert(this.props.AWS, data, this.state.selected).then(() => {
+      this.fetchLists()
+      this.setState({
+        done: true,
+        selected: null
+      })
+    })
   }
 
   discard() {
     const item = this.state.selected
-    rejectAlert(this.props.AWS, item).then(() => this.setState({
-      pending: _.without(this.state.pending, item),
-      discarded: [ item, ...this.state.discarded ],
-      done: true,
-      selected: null
-    }))
+    rejectAlert(this.props.AWS, item).then(() => {
+      this.fetchLists()
+      this.setState({
+        done: true,
+        selected: null
+      })
+    })
   }
 
   logout() {

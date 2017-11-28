@@ -109,30 +109,27 @@ export const listRejectedAlerts = (AWS) => {
 }
 
 
-const createCapAlert = (alert) => {
 
-}
-
-export const approveAlert = (AWS, alert, original) => {
+export const approveAlert = (AWS, capAlert, alert) => {
   alert.status = 'approved'
+  // geo field got added in UI
+  alert.geo = undefined
   const docClient = new AWS.DynamoDB.DocumentClient();
-  return new Promise((resolve, reject) => {
-    docClient.put({TableName: window.config.aws.dynamoPendingAlerts, Item: alert}, (err, data) => {
+  const approvePromise = new Promise((resolve, reject) => {
+    docClient.put({TableName: window.config.aws.dynamoApprovedAlerts, Item: capAlert}, (err, data) => {
       if (err) {
-        console.error('Failed to mark alert approved', err)
+        console.error('Failed to create CAP alert', err)
         reject(err)
         return
       }
-      console.info('Alert marked approved')
+      console.info('Created a new CAP alert')
       resolve(data)
     })
   })
 
-  // TODO put item to approved table
-  const capAlert = createCapAlert(alert)
-/*
-  docClient.putItem({TableName: window.config.aws.dynamoApprovedAlerts, Item: alert}, (err, data) => {
+  return approvePromise.then(() => {
     return new Promise((resolve, reject) => {
+      docClient.put({TableName: window.config.aws.dynamoPendingAlerts, Item: alert}, (err, data) => {
         if (err) {
           console.error('Failed to mark alert approved', err)
           reject(err)
@@ -140,14 +137,15 @@ export const approveAlert = (AWS, alert, original) => {
         }
         console.info('Alert marked approved')
         resolve(data)
-      }
-    )
+      })
+    })
   })
-  */
 }
 
 export const rejectAlert = (AWS, alert) => {
   alert.status = 'rejected'
+  // geo field got added in UI
+  alert.geo = undefined
   const docClient = new AWS.DynamoDB.DocumentClient();
   return new Promise((resolve, reject) => {
     docClient.put({TableName: window.config.aws.dynamoPendingAlerts, Item: alert}, (err, data) => {

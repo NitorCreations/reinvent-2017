@@ -239,8 +239,8 @@ class Admin extends Component {
               </div>
 
               <div className="left col-12">
+                <RaisedButton label="Discard" onClick={this.discard} className="right ml1" />
                 <RaisedButton label="Approve" primary={true} onClick={this.approve} className="right" />
-                <RaisedButton label="Discard" onClick={this.discard} className="right mr1" />
               </div>
             </div>
 

@@ -273,31 +273,69 @@ resources:
             Fn::GetAtt: [IdentityPoolIAMRole, Arn]
     FrontendBucket:
       Type: AWS::S3::Bucket
-#    CloudFrontDistribution:
-#      Type: AWS::CloudFront::Distribution
-#      Properties:
-#        DistributionConfig:
-#          Origins:
-#          - DomainName:
-#              Fn:GetAtt: [FrontendBucket, DomainName]
-#            Id: myS3Origin
-#            S3OriginConfig:
-#              OriginAccessIdentity: origin-access-identity/cloudfront/E127EXAMPLE51Z
-#          Enabled: 'true'
-#          DefaultRootObject: index.html
-#          Aliases:
-#          - mysite.example.com
-#          - yoursite.example.com
-#          DefaultCacheBehavior:
-#            AllowedMethods:
-#            - GET
-#            TargetOriginId: myS3Origin
-#            ForwardedValues:
-#              QueryString: 'false'
-#              Cookies:
-#                Forward: none
-#            ViewerProtocolPolicy: allow-all
-
+      Properties:
+        AccessControl: PublicRead
+        WebsiteConfiguration:
+          IndexDocument: index.html
+          ErrorDocument: 404.html
+    FrontendBucketPolicy:
+      Type: AWS::S3::BucketPolicy
+      Properties:
+        Bucket:
+          Ref: FrontendBucket
+        PolicyDocument:
+          Statement:
+            - Sid: PublicReadForGetBucketObjects
+              Effect: Allow
+              Principal: "*"
+              Action: 's3:GetObject'
+              Resource:
+                Fn::Join:
+                  - ""
+                  - - Fn::GetAtt: [FrontendBucket, Arn]
+                    - "/*"
+    CloudFrontDistribution:
+      Type: AWS::CloudFront::Distribution
+      DependsOn:
+        - FrontendBucket
+      Properties:
+        DistributionConfig:
+          Origins:
+          - DomainName:
+              Fn::GetAtt: [FrontendBucket, DomainName]
+            Id: S3Origin
+            CustomOriginConfig:
+              HTTPPort: 80
+              HTTPSPort: 443
+              OriginProtocolPolicy: http-only
+          Enabled: 'true'
+          DefaultRootObject: index.html
+          Aliases: 
+          - ${opt:stage}.rptf.nitor.zone
+          ViewerCertificate:
+            AcmCertificateArn: arn:aws:acm:us-east-1:809730537167:certificate/22e96a12-6c44-45cf-a76e-e3db66a9f523
+            SslSupportMethod: sni-only
+            MinimumProtocolVersion: TLSv1
+          DefaultCacheBehavior:
+            AllowedMethods:
+            - GET
+            - HEAD
+            TargetOriginId: S3Origin
+            ForwardedValues:
+              QueryString: true
+              Cookies:
+                Forward: none
+            ViewerProtocolPolicy: allow-all
+    DNSRecord:
+      Type: AWS::Route53::RecordSet
+      Properties:
+        HostedZoneId: Z3UXKNRKDT2TVC
+        Name: ${opt:stage}.rptf.nitor.zone.
+        Type: A
+        AliasTarget:
+          HostedZoneId: Z2FDTNDATAQYW2
+          DNSName:
+            Fn::GetAtt: [CloudFrontDistribution, DomainName]
   Outputs:
     IdentityPoolId:
       Description: "The IdentityPool"
@@ -311,6 +349,10 @@ resources:
       Description: "The Client id"
       Value:
         Ref: UserPoolClient
+    FrontendBucket:
+      Description: "Frontend bucket name"
+      Value:
+        Ref: FrontendBucket
 #     NewOutput:
 #       Description: "Description for the output"
 #       Value: "Some output value"

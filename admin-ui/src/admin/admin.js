@@ -257,28 +257,28 @@ class Admin extends Component {
               <div className="left col-12 mb2">
                 <div className="mb1 bold">Category</div>
                 <RadioButtonGroup name="category" onChange={this.updateField.bind(this, 'category')}>
-                  { _.map(CATEGORIES, (item) => (<RadioButton value={item} label={item} key={item} />)) }
+                  { _.map(CATEGORIES, (value, key) => (<RadioButton value={key} label={value} key={key} />)) }
                 </RadioButtonGroup>
               </div>
 
               <div className="left col-12 mb2">
                 <div className="mb1 bold">Severity</div>
                 <RadioButtonGroup name="severity" onChange={this.updateField.bind(this, 'severity')}>
-                  { _.map(SEVERITIES, (item) => (<RadioButton value={item} label={item} key={item} />)) }
+                  { _.map(SEVERITIES, (value, key) => (<RadioButton value={key} label={value} key={key} />)) }
                 </RadioButtonGroup>
               </div>
 
               <div className="left col-12 mb2">
                 <div className="mb1 bold">Urgency</div>
                 <RadioButtonGroup name="urgency" onChange={this.updateField.bind(this, 'urgency')}>
-                  { _.map(URGENCIES, (item) => (<RadioButton value={item} label={item} key={item} />)) }
+                  { _.map(URGENCIES, (value, key) => (<RadioButton value={key} label={value} key={key} />)) }
                 </RadioButtonGroup>
               </div>
 
               <div className="left col-12 mb2">
                 <div className="mb1 bold">Certainty</div>
                 <RadioButtonGroup name="certainty" onChange={this.updateField.bind(this, 'certainty')}>
-                  { _.map(CERTAINTIES, (item) => (<RadioButton value={item} label={item} key={item} />)) }
+                  { _.map(CERTAINTIES, (value, key) => (<RadioButton value={key} label={value} key={key} />)) }
                 </RadioButtonGroup>
               </div>
 

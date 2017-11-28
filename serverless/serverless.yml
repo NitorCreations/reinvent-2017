@@ -37,6 +37,8 @@ provider:
       Ref: DDBTableNotApproved
     IMAGES_BUCKET:
       Ref: ImagesBucket
+    STAGE:
+      Ref: ${opt:stage}
 
 # you can overwrite defaults here
 #  stage: dev

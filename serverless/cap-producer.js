@@ -20,7 +20,7 @@ function constructAreas(payload) {
 }
 
 function createRSSFeed(items, callback) {
-	const url = "https://n00tap3we2.execute-api.us-east-1.amazonaws.com/timo/alert/get/";
+	const url = "https://gw-"+process.env.STAGE+".rptf.nitor.zone/alert/get/";
 	var feed = new Feed({
 		title: 'Alerts',
 		description: 'Hacker alerts',
@@ -81,6 +81,9 @@ function createXmlFromAlert (testAlertJson, callback) {
 	let xmlOutput = json2xml(capXml, { header: true, attributes_key: 'attr' });
 	xmlOutput = xmlOutput.replace('<circles>', '');
 	xmlOutput = xmlOutput.replace('</circles>', '');
+	xmlOutput = xmlOutput.replace('<?xml version="1.0" encoding="UTF-8"?>', 
+	                              '<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet href="https://'+process.env.STAGE+'.rptf.nitor.zone/capatomproduct.xsl" type="text/xsl"?>');
+
 	console.log(xmlOutput);
 	const response = {
 		statusCode: 200,

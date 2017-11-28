@@ -4,7 +4,7 @@ import _ from 'lodash'
  * AWS = this.props.AWS in React
  */
 export const listPendingAlerts = (AWS) => {
-  let docClient = new AWS.DynamoDB.DocumentClient();
+  const docClient = new AWS.DynamoDB.DocumentClient();
   const params = {
     TableName: window.config.aws.dynamoPendingAlerts,
     /*
@@ -43,10 +43,39 @@ export const listPendingAlerts = (AWS) => {
 }
 
 export const approveAlert = (AWS, alert) => {
-  console.error('approveAlert is not implemented yet')
+  alert.status = 'approved'
+  const docClient = new AWS.DynamoDB.DocumentClient();
+  docClient.putItem({TableName: window.config.aws.dynamoPendingAlerts, Item: alert}, (err, data) => {
+    return new Promise((resolve, reject) => {
+        if (err) {
+          console.error('Failed to mark alert approved', err)
+          reject(err)
+          return
+        }
+        console.info('Alert marked approved')
+        resolve(data)
+      }
+    )
+  })
+
+  // TODO put item to approved table
 }
 
 export const rejectAlert = (AWS, alert) => {
+  alert.status = 'rejected'
+  const docClient = new AWS.DynamoDB.DocumentClient();
+  docClient.putItem({TableName: window.config.aws.dynamoPendingAlerts, Item: alert}, (err, data) => {
+    return new Promise((resolve, reject) => {
+        if (err) {
+          console.error('Failed to mark alert rejected', err)
+          reject(err)
+          return
+        }
+        console.info('Alert marked rejected')
+        resolve(data)
+      }
+    )
+  })
   console.error('rejectAlert is not implemented yet')
 }
 

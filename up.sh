@@ -30,6 +30,8 @@ USER_POOL_ID=$(getOutputValue "$OUTPUTS" "UserPoolId")
 APP_CLIENT_ID=$(getOutputValue "$OUTPUTS" "ClientId")
 IDENTITY_POOL_ID=$(getOutputValue "$OUTPUTS" "IdentityPoolId")
 FRONTEND_BUCKET=$(getOutputValue "$OUTPUTS" "FrontendBucket")
+APPROVED_TABLE=$(getOutputValue "$OUTPUTS" "DDBTableApproved")
+NOT_APPROVED_TABLE=$(getOutputValue "$OUTPUTS" "DDBTableNotApproved")
 
 cd admin-ui
 
@@ -47,6 +49,8 @@ cd build
 #  "dynamoApprovedAlerts": "aws-nodejs-riki3-DDBTableApproved-18O0SSFMUK6QT"
 sed -i -e "s/us-east-1_0QbddCzbp/$USER_POOL_ID/g" -e "s/apef76d7ojassafva35o5tap2/$APP_CLIENT_ID/g" \
 	-e "s/us-east-1:1e166dad-bd15-4e39-9700-68c9c1305906/$IDENTITY_POOL_ID/g" \
+	-e "s/aws-nodejs-riki3-DDBTableNotApproved-689LKZKDLM2Z/$NOT_APPROVED_TABLE/g" \
+	-e "s/aws-nodejs-riki3-DDBTableApproved-18O0SSFMUK6QT/$APPROVED_TABLE/g" \
 	config.json
 
 aws s3 sync --acl=public-read . s3://$FRONTEND_BUCKET

@@ -85,7 +85,7 @@ class Admin extends Component {
       }
     }
 
-    approveAlert(this.props.AWS, item).then(() => this.setState({
+    approveAlert(this.props.AWS, item, this.state.selected).then(() => this.setState({
       pending: _.without(this.state.pending, item),
       approved: [ item, ...this.state.discarded ],
       done: true,

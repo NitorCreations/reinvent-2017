@@ -113,7 +113,7 @@ const createCapAlert = (alert) => {
 
 }
 
-export const approveAlert = (AWS, alert) => {
+export const approveAlert = (AWS, alert, original) => {
   alert.status = 'approved'
   const docClient = new AWS.DynamoDB.DocumentClient();
   return new Promise((resolve, reject) => {

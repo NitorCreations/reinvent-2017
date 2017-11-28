@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './admin.css'
-import { RadioButton, RadioButtonGroup, RaisedButton, TextField } from 'material-ui'
+import { RadioButton, RadioButtonGroup, RaisedButton } from 'material-ui'
 import * as _ from 'lodash'
 import MapDisplay from '../map-display/map-display'
 import List, { ListItem } from 'material-ui/List';

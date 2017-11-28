@@ -125,7 +125,7 @@ class Admin extends Component {
 
     return (
       <div className="left col-12 Admin">
-        <div className="left col-4 bg-gray">
+        <div className="col-4 bg-gray fixed left-0 top-0">
           <div className="bg-black left col-12 p2">
             <img src="https://www.internetalerts.org/img/fia-logo-color.b829b6b9.svg" alt="FIA"/>
             <a onClick={this.logout} className="clickable text-white">Logout</a>
@@ -154,7 +154,7 @@ class Admin extends Component {
           <div className="left col-12 p2">
             <h2 className="text-red clickable m0" onClick={() => this.setState({ isDiscardedExpanded: !this.state.isDiscardedExpanded})}>
               Discarded alerts
-              <span className="text-small text-dark"> ({discarded.length})</span>
+              <span className="text-small text-dark"> ({ discarded.length })</span>
             </h2>
             { this.state.isDiscardedExpanded && (<List dense="true">
               {discarded}
@@ -165,7 +165,7 @@ class Admin extends Component {
 
 
         { this.state.selected && (
-          <div className="left col-8 p2">
+          <div className="right col-8 p2">
             <div className="card p2">
               <div className="left col-12 mb2">
                 <h3 className="m0 mb2">
@@ -196,13 +196,13 @@ class Admin extends Component {
               </div>
 
               <div className="left col-8 mb2">
-                <div className="mb1 bold">description</div>
-                description goes here
+                <div className="mb1 bold">Description</div>
+                { this.state.selected.description }
               </div>
 
               <div className="left col-8 mb2">
                 <div className="mb1 bold">Image</div>
-                maybe, we'll see.
+                <img src="https://dummyimage.com/400x240/666/999&text=image" alt=""/>
               </div>
 
               <div className="left col-12 mb2">
@@ -235,12 +235,12 @@ class Admin extends Component {
 
               <div className="left col-8 mb2">
                 <div className="mb1 bold">Instructions</div>
-                Instructions go here
+                { this.state.selected.instructions || 'Please describe what needs to be done to avoid this emergency' }
               </div>
 
               <div className="left col-12">
                 <RaisedButton label="Approve" primary={true} onClick={this.approve} className="right" />
-                <RaisedButton label="Discard" onClick={this.discard} className="right ml1" />
+                <RaisedButton label="Discard" onClick={this.discard} className="right mr1" />
               </div>
             </div>
 

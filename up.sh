@@ -32,6 +32,7 @@ IDENTITY_POOL_ID=$(getOutputValue "$OUTPUTS" "IdentityPoolId")
 FRONTEND_BUCKET=$(getOutputValue "$OUTPUTS" "FrontendBucket")
 APPROVED_TABLE=$(getOutputValue "$OUTPUTS" "DDBTableApproved")
 NOT_APPROVED_TABLE=$(getOutputValue "$OUTPUTS" "DDBTableNotApproved")
+DISTRIBUTION_ID=$(getOutputValue "$OUTPUTS" "CFDistribution")
 
 cd admin-ui
 
@@ -55,4 +56,4 @@ sed -i -e "s/us-east-1_0QbddCzbp/$USER_POOL_ID/g" -e "s/apef76d7ojassafva35o5tap
 
 aws s3 sync --acl=public-read . s3://$FRONTEND_BUCKET
 
-
+aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths '/*'

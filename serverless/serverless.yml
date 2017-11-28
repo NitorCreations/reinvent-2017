@@ -363,6 +363,14 @@ resources:
       Description: "Frontend bucket name"
       Value:
         Ref: FrontendBucket
+    DDBTableApproved:
+      Description: "Table"
+      Value:
+        Ref: DDBTableApproved
+    DDBTableNotApproved:
+      Description: "Table"
+      Value:
+        Ref: DDBTableNotApproved
 #     NewOutput:
 #       Description: "Description for the output"
 #       Value: "Some output value"

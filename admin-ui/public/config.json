@@ -1,9 +1,9 @@
 {
   "aws": {
     "region": "us-east-1",
-    "identityPoolId": "us-east-1:7f57202a-25e2-43a0-992b-5cc14f7460f1",
-    "userPoolId": "us-east-1_hdF8ZIuqB",
-    "clientId": "6hc7u2db52joneeefo82nnmhss"
+    "identityPoolId": "us-east-1:0d7cd948-7fce-4d7d-b759-455c2fd6fd2c",
+    "userPoolId": "us-east-1_GvLDzyBKg",
+    "clientId": "3lkhntcb1kt1g7urac2ksf03hk"
   },
   "jotain": "muuta"
 }

@@ -1,10 +1,10 @@
 {
   "aws": {
     "region": "us-east-1",
-    "identityPoolId": "us-east-1:0ae6669d-bbb7-4513-ba1e-d12b84891f8f",
-    "userPoolId": "us-east-1_1285dr1BR",
-    "clientId": "34d7eu6gqodqcjv7hkc9fb2les",
-    "dynamoPendingAlerts": "aws-nodejs-juha3-DDBTableNotApproved-1B68GKXUD9KAY"
+    "identityPoolId": "us-east-1:1e166dad-bd15-4e39-9700-68c9c1305906",
+    "userPoolId": "us-east-1_0QbddCzbp",
+    "clientId": "apef76d7ojassafva35o5tap2",
+    "dynamoPendingAlerts": "aws-nodejs-riki3-DDBTableNotApproved-689LKZKDLM2Z"
   },
   "jotain": "muuta"
 }

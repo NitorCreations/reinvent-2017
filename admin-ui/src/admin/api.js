@@ -33,9 +33,11 @@ export const listPendingAlerts = (AWS) => {
         reject(err)
         return
       }
-      console.info(data.Items)
+      console.info('Found data', data.Items)
       // TODO should filter in database
-      resolve(_.map(_.filter(data.Items, item => item.status !== 'pending'), fixTypes))
+      resolve(_.map(_.filter(data.Items, item => {
+        return item.status === 'pending'
+      }), fixTypes))
     })
   })
 }

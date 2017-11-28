@@ -368,7 +368,7 @@ module.exports.getStyleXsl = (event, context, callback) => {
 	const response = {
 		statusCode: 200,
 		headers: {
-			'Content-Type': 'text/xml'
+			'Content-Type': 'text/xsl'
 		},
 		body: xmlOutput
 	}

@@ -4,8 +4,10 @@ import { RadioButton, RadioButtonGroup, RaisedButton, TextField } from 'material
 import * as _ from 'lodash'
 import MapDisplay from '../map-display/map-display'
 import List, { ListItem } from 'material-ui/List';
-import { listPendingAlerts, geoReverse } from './api'
+import FontIcon from 'material-ui/FontIcon';
+import { listPendingAlerts, rejectAlert, approveAlert, geoReverse } from './api'
 import { CATEGORIES, SEVERITIES, URGENCIES, CERTAINTIES } from './static-data'
+import Snackbar from 'material-ui/Snackbar';
 
 class Admin extends Component {
   constructor(props) {
@@ -38,7 +40,8 @@ class Admin extends Component {
     this.setState({ selected: item })
   }
 
-  approve(event, item = this.state.selected) {
+  approve() {
+    const item = this.state.selected
     const {
       time,
       category,
@@ -81,10 +84,23 @@ class Admin extends Component {
     }
 
     console.log(data)
+
+    approveAlert(item).then(() => this.setState({
+      pending: _.without(this.state.pending, item),
+      approved: [ item, ...this.state.discarded ],
+      done: true,
+      selected: null
+    }))
   }
 
-  discard(item = this.state.selected) {
-    console.log('discard', item)
+  discard() {
+    const item = this.state.selected
+    rejectAlert(item).then(() => this.setState({
+      pending: _.without(this.state.pending, item),
+      discarded: [ item, ...this.state.discarded ],
+      done: true,
+      selected: null
+    }))
   }
 
   logout() {
@@ -109,8 +125,8 @@ class Admin extends Component {
       return (<ListItem key={index}
         onClick={this.select.bind(this, item)}>
         <span className="tag text-small text-white bg-black mr1">{ type }</span>
-        <span className="bold mr1">{loc}</span>
-        <span className="text-smaller">{item.time}</span>
+        <span className="bold mr1">{loc}</span><br/>
+        <span className="ml3 pl1 text-smaller">{item.time}</span>
       </ListItem>)
     }
 
@@ -133,6 +149,9 @@ class Admin extends Component {
 
           <div className="left col-12 p2">
             <h2 className="text-red clickable m0" onClick={() => this.setState({ isNewExpanded: !this.state.isNewExpanded})}>
+              <FontIcon className="material-icons">
+                { this.state.isNewExpanded ? 'keyboard_arrow_down' : 'keyboard_arrow_right'}
+              </FontIcon>
               New alerts
               <span className="text-small text-dark"> ({pending.length})</span>
             </h2>
@@ -143,6 +162,9 @@ class Admin extends Component {
 
           <div className="left col-12 p2">
             <h2 className="text-red clickable m0" onClick={() => this.setState({ isApprovedExpanded: !this.state.isApprovedExpanded})}>
+              <FontIcon className="material-icons">
+                { this.state.isApprovedExpanded ? 'keyboard_arrow_down' : 'keyboard_arrow_right'}
+              </FontIcon>
               Approved alerts
               <span className="text-small text-dark"> ({approved.length})</span>
             </h2>
@@ -153,6 +175,9 @@ class Admin extends Component {
 
           <div className="left col-12 p2">
             <h2 className="text-red clickable m0" onClick={() => this.setState({ isDiscardedExpanded: !this.state.isDiscardedExpanded})}>
+              <FontIcon className="material-icons">
+                { this.state.isDiscardedExpanded ? 'keyboard_arrow_down' : 'keyboard_arrow_right'}
+              </FontIcon>
               Discarded alerts
               <span className="text-small text-dark"> ({ discarded.length })</span>
             </h2>
@@ -162,6 +187,13 @@ class Admin extends Component {
           </div>
 
         </div>
+
+        <Snackbar
+          open={this.state.done}
+          message="Done!"
+          autoHideDuration={2000}
+          onRequestClose={() => this.setState({done: false})}
+        />
 
 
         { this.state.selected && (
@@ -251,11 +283,6 @@ class Admin extends Component {
       </div>
     )
   }
-}
-
-
-Admin.defaultProps = {
-  onLogin: () => {}
 }
 
 export default Admin

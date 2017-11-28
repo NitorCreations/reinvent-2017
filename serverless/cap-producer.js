@@ -2,6 +2,7 @@
 const json2xml = require('json2xml');
 const _ = require('lodash');
 const AWS = require('aws-sdk');
+const Feed = require('feed');
 
 function constructAreas(payload) {
 	const points = _.map(payload.alert.location, (location) => {
@@ -16,6 +17,36 @@ function constructAreas(payload) {
 		circles: points
 	};
 
+}
+
+function createRSSFeed(items, callback) {
+	const url = "https://n00tap3we2.execute-api.us-east-1.amazonaws.com/timo/alert/get/";
+	var feed = new Feed({
+		title: 'Alerts',
+		description: 'Hacker alerts',
+		generator: 'Nitor RPTF'
+	});
+	_.forEach(items, (item) => {
+		console.log("item", JSON.stringify(item));
+		const alert = item.alert;
+		const localizedDescription = (alert.description) ? alert.description[0] : null;
+		feed.addItem({
+			title: alert.headline,
+			description : localizedDescription.text,
+			link : url+item.id,
+		});
+	});
+
+	const response = {
+		statusCode: 200,
+		headers: {
+			'Content-Type': 'text/xml'
+		},
+		body: feed.rss2()
+	}
+
+	console.log("returning response", response);
+	callback(null, response);
 }
 
 function createXmlFromAlert (testAlertJson, callback) {
@@ -79,6 +110,22 @@ module.exports.produceCap = (event, context, callback) => {
 			testAlertJson = data.Item;
 			console.log("data", JSON.stringify(testAlertJson));
 			createXmlFromAlert(testAlertJson, callback);
+		}
+	});
+};
+
+module.exports.produceAllCaps = (event, context, callback) => {
+	const db = new AWS.DynamoDB.DocumentClient();
+	let testAlertJson;
+	var params = {
+		TableName: process.env.APPROVED_ALERTS_TABLE
+	};
+	db.scan(params, function(err, data) {
+		if (err) console.log(err, err.stack); 
+		else
+		{     
+			console.log("got all caps data",data);
+			createRSSFeed(data.Items, callback);
 		}
 	});
 };

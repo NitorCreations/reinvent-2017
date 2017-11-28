@@ -82,7 +82,7 @@ function createXmlFromAlert (testAlertJson, callback) {
 	xmlOutput = xmlOutput.replace('<circles>', '');
 	xmlOutput = xmlOutput.replace('</circles>', '');
 	xmlOutput = xmlOutput.replace('<?xml version="1.0" encoding="UTF-8"?>', 
-	                              '<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet href="https://'+process.env.STAGE+'.rptf.nitor.zone/capatomproduct.xsl" type="text/xsl"?>');
+	                              '<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet href="https://'+process.env.STAGE+'.rptf.nitor.zone/alert/alertstyle.xsl" type="text/xsl"?>');
 
 	console.log(xmlOutput);
 	const response = {

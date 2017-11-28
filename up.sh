@@ -35,6 +35,7 @@ cd admin-ui
 
 yarn install
 
+yarn run build-css
 yarn run build
 
 cd build # TODO: Check this!

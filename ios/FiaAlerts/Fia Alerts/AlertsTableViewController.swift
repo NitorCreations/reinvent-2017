@@ -37,13 +37,20 @@ class AlertsTableViewController: UITableViewController {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.textColor = UIColor(red: 243/255, green: 153/255, blue: 193/255, alpha: 1.0)
-        header.textLabel?.font = UIFont(name: "Helvetica Neue", size: 18)
-        header.textLabel?.text = "Alert the Authorities"
-        header.textLabel?.frame = header.frame
-        header.textLabel?.textAlignment = NSTextAlignment.left
+//    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+//        let header = view as! UITableViewHeaderFooterView
+//        header.textLabel?.textColor = UIColor(red: 243/255, green: 153/255, blue: 193/255, alpha: 1.0)
+//        header.textLabel?.font = UIFont(name: "Helvetica Neue", size: 18)
+//        header.textLabel?.text = "Alert the Authorities"
+//        header.textLabel?.frame = header.frame
+//        header.textLabel?.textAlignment = NSTextAlignment.left
+//    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currentCell = tableView.cellForRow(at: indexPath)
+        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Report") as! ReportViewController
+        viewController.label = currentCell?.textLabel!.text! as String!
+        navigationController?.pushViewController(viewController, animated: true)
     }
 
     /*

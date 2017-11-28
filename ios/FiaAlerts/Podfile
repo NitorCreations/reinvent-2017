@@ -6,8 +6,9 @@ target 'Fia Alerts' do
   use_frameworks!
 
   # Pods for Fia Alerts
-  pod ‘AWSS3’
-  pod ‘AWSCognito’
+  pod 'AWSS3'
+  pod 'AWSCognito'
   pod 'Alamofire'
+  pod 'SnapKit'
 
 end

@@ -1,9 +1,10 @@
 {
   "aws": {
     "region": "us-east-1",
-    "identityPoolId": "us-east-1:0d7cd948-7fce-4d7d-b759-455c2fd6fd2c",
-    "userPoolId": "us-east-1_GvLDzyBKg",
-    "clientId": "3lkhntcb1kt1g7urac2ksf03hk"
+    "identityPoolId": "us-east-1:0ae6669d-bbb7-4513-ba1e-d12b84891f8f",
+    "userPoolId": "us-east-1_1285dr1BR",
+    "clientId": "34d7eu6gqodqcjv7hkc9fb2les",
+    "dynamoPendingAlerts": "aws-nodejs-juha3-DDBTableNotApproved-1B68GKXUD9KAY"
   },
   "jotain": "muuta"
 }

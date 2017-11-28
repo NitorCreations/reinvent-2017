@@ -19,6 +19,13 @@ export const listPendingAlerts = (AWS) => {
     },
     */
   }
+
+  const fixTypes = (item) => {
+    console.log('xxx',item)
+    item.lat = parseFloat(item.lat)
+    item.lon = parseFloat(item.lon)
+    return item
+  }
   return new Promise((resolve, reject) => {
     docClient.scan(params, (err, data) => {
       if(err) {
@@ -26,8 +33,9 @@ export const listPendingAlerts = (AWS) => {
         reject(err)
         return
       }
+      console.info(data.Items)
       // TODO should filter in database
-      resolve(_.filter(data.Items, item => item.status !== 'pending'))
+      resolve(_.map(_.filter(data.Items, item => item.status !== 'pending'), fixTypes))
     })
   })
 }

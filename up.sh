@@ -17,7 +17,7 @@ fi
 
 
 cd serverless
-
+sls create_domain $STAGE
 sls deploy $STAGE
 
 STACK_NAME="aws-nodejs${STACK_STAGE}"

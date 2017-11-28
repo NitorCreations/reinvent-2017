@@ -49,11 +49,13 @@ module.exports.linkImage = (event, context, callback) => {
     const alertId = event.queryStringParameters.alertId;
     const data = event.body;
     const s3 = new AWS.S3();
+    const rekognition = new AWS.Rekognition();
 
     const params = {
         Bucket: bucketName,
         Key: alertId,
-        Body: data
+        Body: data,
+        ContentType: "image/jpg"
     };
 
     s3.upload(params, (err, data) => {
@@ -64,9 +66,30 @@ module.exports.linkImage = (event, context, callback) => {
                 body: JSON.stringify({status: "ERROR", err: err})
             });
         } else {
-            callback(null, {
-                statusCode: 201,
-                body: JSON.stringify({status: "OK"})
+            const params = {
+                Image: {
+                    S3Object: {
+                        Bucket: bucketName,
+                        Name: alertId
+                    }
+                },
+                MaxLabels: 100,
+                MinConfidence: 80
+            };
+
+            rekognition.detectLabels(params, (err, data) => {
+                if(err) {
+                    console.log(err);
+                    callback(null, {
+                        statusCode: 500,
+                        body: JSON.stringify({status: "ERROR", err: err})
+                    });
+                } else {
+                    callback(null, {
+                        statusCode: 201,
+                        body: JSON.stringify({status: "OK", data: data})
+                    });
+                }
             });
         }
     });

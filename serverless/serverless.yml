@@ -94,6 +94,7 @@ provider:
         - "lambda:DeleteEventSourceMapping"
         - "lambda:GetFunctionConfiguration"
         - "lambda:DeleteFunction"
+        - "rekognition:DetectLabels"
       Resource: "*"
 
 # you can define service wide environment variables here

@@ -8,6 +8,7 @@ import FontIcon from 'material-ui/FontIcon';
 import { listPendingAlerts, listApprovedAlerts, listRejectedAlerts, rejectAlert, approveAlert, geoReverse } from './api'
 import { CATEGORIES, SEVERITIES, URGENCIES, CERTAINTIES } from './static-data'
 import Snackbar from 'material-ui/Snackbar';
+import { moment } from 'moment';
 
 class Admin extends Component {
   constructor(props) {
@@ -75,7 +76,7 @@ class Admin extends Component {
         "identifier" : id,
         "sender": "nitor-rptf-team",
         "senderName": "Nitor RPTF",
-        "sent": (new Date()).toISOString(),
+        "sent": moment().format(),
         "status": "Actual",
         "event": "disaster event",
         category,

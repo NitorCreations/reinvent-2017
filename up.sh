@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # Stage is $1
 
 function getOutputValue() {
-    return $(echo "$1" | jq -r --arg key "$2" '. | map(select(.OutputKey == "$key"))')
+  echo "$1" | jq -r --arg key "$2" '.|map(select(.OutputKey == $key))|.[0].OutputValue'
 }
 
 
@@ -20,7 +20,7 @@ cd serverless
 
 sls deploy $STAGE
 
-STACK-NAME="aws-nodejs${STACK_STAGE}"
+STACK_NAME="aws-nodejs${STACK_STAGE}"
 
 cd -
 
@@ -38,7 +38,16 @@ yarn install
 yarn run build-css
 yarn run build
 
-cd build # TODO: Check this!
+cd build
+
+#  "identityPoolId": "us-east-1:1e166dad-bd15-4e39-9700-68c9c1305906",
+#  "userPoolId": "us-east-1_0QbddCzbp",
+#  "clientId": "apef76d7ojassafva35o5tap2",
+#  "dynamoPendingAlerts": "aws-nodejs-riki3-DDBTableNotApproved-689LKZKDLM2Z",
+#  "dynamoApprovedAlerts": "aws-nodejs-riki3-DDBTableApproved-18O0SSFMUK6QT"
+sed -i -e "s/us-east-1_0QbddCzbp/$USER_POOL_ID/g" -e "s/apef76d7ojassafva35o5tap2/$APP_CLIENT_ID/g" \
+	-e "s/us-east-1:1e166dad-bd15-4e39-9700-68c9c1305906/$IDENTITY_POOL_ID/g" \
+	config.json
 
 aws s3 sync --acl=public-read . s3://$FRONTEND_BUCKET
 

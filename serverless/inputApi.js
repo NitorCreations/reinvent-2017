@@ -45,5 +45,29 @@ module.exports.createAlert = (event, context, callback) => {
 
 
 module.exports.linkImage = (event, context, callback) => {
-    callback(null, getResponse(event));
+    const bucketName = process.env.IMAGES_BUCKET;
+    const alertId = event.queryStringParameters.alertId;
+    const data = event.body;
+    const s3 = new AWS.S3();
+
+    const params = {
+        Bucket: bucketName,
+        Key: alertId,
+        Body: data
+    };
+
+    s3.upload(params, (err, data) => {
+        if(err) {
+            console.log(err);
+            callback(null, {
+                statusCode: 500,
+                body: JSON.stringify({status: "ERROR", err: err})
+            });
+        } else {
+            callback(null, {
+                statusCode: 201,
+                body: JSON.stringify({status: "OK"})
+            });
+        }
+    });
 };

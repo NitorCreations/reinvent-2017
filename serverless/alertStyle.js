@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports.getStyleXsl = (event, context, callback) => {
-	const xmlOutput = `<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:cap="urn:oasis:names:tc:emergency:cap:1.1" xmlns:ha="http://www.alerting.net/namespace/index_1.0" version="1.0">
+	const xmlOutput = `<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:cap="urn:oasis:names:tc:emergency:cap:1.2" xmlns:ha="http://www.alerting.net/namespace/index_1.0" version="1.0">
 <xsl:output method="html" doctype-system="http://www.w3.org/TR/html4/strict.dtd" doctype-public="-//W3C//DTD HTML 4.01//EN" indent="yes"/>
 <!--  Feed header  -->
 <xsl:template match="cap:alert">

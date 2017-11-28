@@ -116,10 +116,11 @@ class Admin extends Component {
     const makeListItem = (item, index) => {
       const types = {
         security: 'sec',
-        fire: 'fire'
+        fire: 'fire',
+        infrastructure: 'infr'
       }
 
-      const type = types[item.type] || item.type
+      const type = types[item.type.toLowerCase()] || item.type
       const loc = `${_.get(item, 'geo.address.state')}, ${_.get(item, 'geo.address.country_code', '').toUpperCase()}`
 
       return (<ListItem key={index}

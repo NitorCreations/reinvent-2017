@@ -65,6 +65,7 @@ class Admin extends Component {
     } = item
 
     const data = {
+      "id": id,
       "alert": {
         "identifier" : id,
         "sender": "nitor-rptf-team",
@@ -93,7 +94,7 @@ class Admin extends Component {
       }
     }
 
-    approveAlert(this.props.AWS, item, this.state.selected).then(() => this.setState({
+    approveAlert(this.props.AWS, data, this.state.selected).then(() => this.setState({
       pending: _.without(this.state.pending, item),
       approved: [ item, ...this.state.discarded ],
       done: true,

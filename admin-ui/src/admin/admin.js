@@ -52,12 +52,13 @@ class Admin extends Component {
       description,
       instruction,
       lat,
-      lon
+      lon,
+      id
     } = item
 
     const data = {
       "alert": {
-        "identifier" : "abcabbacd",
+        "identifier" : id,
         "sender": "nitor-rptf-team",
         "senderName": "Nitor RPTF",
         "sent": (new Date()).toISOString(),
@@ -83,8 +84,6 @@ class Admin extends Component {
         }]
       }
     }
-
-    console.log(data)
 
     approveAlert(this.props.AWS, item).then(() => this.setState({
       pending: _.without(this.state.pending, item),

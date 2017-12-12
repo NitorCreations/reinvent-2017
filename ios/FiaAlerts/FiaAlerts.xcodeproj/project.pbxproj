@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		548CC4CD4475E24532A0CB89 /* Pods_FiaAlerts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 747231A5544948503D0FEAAB /* Pods_FiaAlerts.framework */; };
 		A61D70A41FCC9260008B52B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61D70A31FCC9260008B52B2 /* AppDelegate.swift */; };
 		A61D70A91FCC9260008B52B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A61D70A71FCC9260008B52B2 /* Main.storyboard */; };
 		A61D70AC1FCC9260008B52B2 /* Fia_Alerts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A61D70AA1FCC9260008B52B2 /* Fia_Alerts.xcdatamodeld */; };
@@ -22,7 +23,10 @@
 
 /* Begin PBXFileReference section */
 		2455AD697476055E80B6E6CD /* Pods-Fia Alerts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fia Alerts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fia Alerts/Pods-Fia Alerts.release.xcconfig"; sourceTree = "<group>"; };
+		4B80172847307EFD92AE64A5 /* Pods-FiaAlerts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FiaAlerts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FiaAlerts/Pods-FiaAlerts.debug.xcconfig"; sourceTree = "<group>"; };
 		64FC149D88EE029703B14B72 /* Pods-Fia Alerts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fia Alerts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fia Alerts/Pods-Fia Alerts.debug.xcconfig"; sourceTree = "<group>"; };
+		747231A5544948503D0FEAAB /* Pods_FiaAlerts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FiaAlerts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		889B75D036C7CB1CFB994414 /* Pods-FiaAlerts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FiaAlerts.release.xcconfig"; path = "Pods/Target Support Files/Pods-FiaAlerts/Pods-FiaAlerts.release.xcconfig"; sourceTree = "<group>"; };
 		A43B95930CE3FD091905425B /* Pods_Fia_Alerts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fia_Alerts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61D70A01FCC9260008B52B2 /* FiaAlerts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FiaAlerts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61D70A31FCC9260008B52B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +48,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBCEA8A273B0C4F607C90B7E /* Pods_Fia_Alerts.framework in Frameworks */,
+				548CC4CD4475E24532A0CB89 /* Pods_FiaAlerts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +60,8 @@
 			children = (
 				64FC149D88EE029703B14B72 /* Pods-Fia Alerts.debug.xcconfig */,
 				2455AD697476055E80B6E6CD /* Pods-Fia Alerts.release.xcconfig */,
+				4B80172847307EFD92AE64A5 /* Pods-FiaAlerts.debug.xcconfig */,
+				889B75D036C7CB1CFB994414 /* Pods-FiaAlerts.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -99,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				A43B95930CE3FD091905425B /* Pods_Fia_Alerts.framework */,
+				747231A5544948503D0FEAAB /* Pods_FiaAlerts.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -189,7 +197,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fia Alerts/Pods-Fia Alerts-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FiaAlerts/Pods-FiaAlerts-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		78283E01D459708B34D83F9C /* [CP] Copy Pods Resources */ = {
@@ -204,7 +212,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fia Alerts/Pods-Fia Alerts-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FiaAlerts/Pods-FiaAlerts-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F2ED893F5D5C6482849DEAC6 /* [CP] Check Pods Manifest.lock */ = {
@@ -367,7 +375,7 @@
 		};
 		A61D70B61FCC9260008B52B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 64FC149D88EE029703B14B72 /* Pods-Fia Alerts.debug.xcconfig */;
+			baseConfigurationReference = 4B80172847307EFD92AE64A5 /* Pods-FiaAlerts.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -383,7 +391,7 @@
 		};
 		A61D70B71FCC9260008B52B2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2455AD697476055E80B6E6CD /* Pods-Fia Alerts.release.xcconfig */;
+			baseConfigurationReference = 889B75D036C7CB1CFB994414 /* Pods-FiaAlerts.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

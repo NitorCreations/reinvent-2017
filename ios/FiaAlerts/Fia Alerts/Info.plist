@@ -71,6 +71,8 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>User can share an image of what is going  on in her area. </string>
 	<key>AWS</key>
 	<dict>
 		<key>CredentialsProvider</key>

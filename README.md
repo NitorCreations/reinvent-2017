@@ -6,9 +6,14 @@
 ![Architecture diagram](architecture.png)
 
 ## Installing
+
 [Backend](serverless/README.md)
 
 [Admin UI](admin-ui/README.md)
+
+[Alexa skill](alexa-skill-lambda/README.md)
+
+[iOS client](ios/FiaAlerts/README.md)
 
 TODO
 

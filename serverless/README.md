@@ -54,3 +54,7 @@ NOTES
 ### After deploying
 
 You'll need to create some user accounts in [Cognito](https://console.aws.amazon.com/cognito/home) to enable access to Admin UI.
+
+
+## TODO
+- Image upload is not working currently

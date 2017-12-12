@@ -6,6 +6,7 @@ const Https = require('https');
  * wrapper class for Alexa Address API
  */
 class AlexaDeviceAddressClient {
+
     /**
      * @param apiEndpoint   Alexa API endpoint
      * @param deviceId      device ID of your alexa
@@ -46,27 +47,24 @@ class AlexaDeviceAddressClient {
             path: path,
             method: 'GET',
             headers: {
-                'Authorization': 'Bearer ' + this.consentToken
+                'Authorization': `Bearer ${this.consentToken}`
             }
         }
 
         return new Promise((resolve, reject) => {
-            Https.get(requestOptions, (response) => {
-                console.log(`Device Address API status code: ${response.statusCode}`);
+            Https.get(requestOptions, response => {
 
-                response.on('data', (data) => {
-                    let responsePayloadObject = JSON.parse(data);
-
+                response.on('data', data => {
                     const deviceAddressResponse = {
                         statusCode: response.statusCode,
-                        address: responsePayloadObject
+                        address: JSON.parse(data)
                     };
 
                     resolve(deviceAddressResponse);
                 });
-            }).on('error', (e) => {
+            }).on('error', e => {
                 console.error(e);
-                reject();
+                reject(e);
             });
         })
     }

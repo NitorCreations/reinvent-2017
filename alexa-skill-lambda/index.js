@@ -2,7 +2,6 @@
 
 const Alexa = require('alexa-sdk');
 const fetch = require('node-fetch');
-const _ = require('lodash');
 const AlexaDeviceAddressClient = require('./AlexaDeviceAddressClient');
 
 // TODO: make configs configurable
@@ -16,8 +15,8 @@ const languageStrings = {
             WELCOME_MESSAGE: "What is your emergency?",
             WELCOME_REPROMPT: "What is your emergency?",
             LAUNCH_QUESTION: "What's wrong?",
-            GEO_SUCCESS: "Got it, sending alert."
-            GEO_FAILED: "Sorry, I couldn't figure out where you are"
+            GEO_SUCCESS: "Got it, sending alert.",
+            GEO_FAILED: "Sorry, I couldn't figure out where you are",
             HELP_MESSAGE: "Need help? To create an alert, just say there's an emergency. Otherwise you can just ask me for current status.",
             STOP_MESSAGE: 'Goodbye!'
         }
@@ -48,7 +47,6 @@ const handlers = {
         this.emit('SessionEndedRequest');
     },
     'SessionEndedRequest': function () {
-        console.log(`Session ended: ${this.event.request.reason}`);
         this.response.speak(this.t('STOP_MESSAGE'))
         this.emit(':responseReady');
     },
@@ -72,7 +70,7 @@ const handlers = {
                 return
             }
 
-            createAlert(geo, 'Fire').then(resp => {
+            createAlert(geo, 'Fire').then(() => {
                 this.response
                     .speak(this.t('GEO_SUCCESS'));
                 this.emit(':responseReady');
@@ -94,7 +92,7 @@ const handlers = {
                 return
             }
 
-            createAlert(geo, 'Earthquake').then(resp => {
+            createAlert(geo, 'Earthquake').then(() => {
                 this.response
                     .speak(this.t('GEO_SUCCESS'));
                 this.emit(':responseReady');
@@ -114,7 +112,7 @@ const handlers = {
  */
 function createAlert(where, what) {
     return fetch(
-        `${ALERT_API_PATH}/demo/alert/create`,
+        `${ALERT_API_BASE}/demo/alert/create`,
         {
             headers: {
               'Accept': 'application/json',
@@ -157,7 +155,7 @@ function resolveAddressToGeo() {
 }
 
 function parseAddress(addr) {
-    return `${addr.addressLine1}, ${addr.city}, ${addr.stateOrRegion}, ${addr.countryCode}`.replace(/\ /g, '%20')
+    return `${addr.addressLine1}, ${addr.city}, ${addr.stateOrRegion}, ${addr.countryCode}`.replace(/ /g, '%20')
 }
 
 exports.handler = function (event, context, callback) {

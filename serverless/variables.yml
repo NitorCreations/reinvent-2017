@@ -2,4 +2,5 @@ Route53HostedZoneID:
 # The base domain name needs to be the domain name for the route 53 hosted zone above
 BaseDomainName:
 # Certificate should be a wildcard certificate for the base domain name above
+# e.g. if BaseDomainName is foo.bar, the certificate should be for *.foo.bar
 TLSCertificateARN:

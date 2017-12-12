@@ -24,6 +24,7 @@ aws_secret_access_key = <insert-secret-here>
 aws_access_key_id = <insert-access-key-here>
 ```
 
+Update `variables.yml` values for your environment.
 ### Deploying
 ```
 export AWS_PROFILE=rptf

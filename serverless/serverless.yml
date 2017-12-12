@@ -197,6 +197,9 @@ resources:
           -
             AttributeName: "id"
             AttributeType: "S"
+          -
+            AttributeName: "status"
+            AttributeType: "S"
         KeySchema:
           -
             AttributeName: "id"
@@ -304,6 +307,14 @@ resources:
                   Resource:
                     - {'Fn::GetAtt': [DDBTableApproved, Arn]}
                     - {'Fn::GetAtt': [DDBTableNotApproved, Arn]}
+                    - Fn::Join:
+                        - ""
+                        - - Fn::GetAtt: [DDBTableApproved, Arn]
+                          - "/index/*"
+                    - Fn::Join:
+                        - ""
+                        - - Fn::GetAtt: [DDBTableNotApproved, Arn]
+                          - "/index/*"
         RoleName: ${opt:stage}fia-authenticated
     IdentityPoolRoleMapping:
       Type: "AWS::Cognito::IdentityPoolRoleAttachment"

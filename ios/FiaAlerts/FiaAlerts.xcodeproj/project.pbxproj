@@ -16,6 +16,8 @@
 		A65AF19A1FCCCB510052B934 /* AlertsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65AF1991FCCCB510052B934 /* AlertsTableViewController.swift */; };
 		A65F73D91FCC9E2500F2492E /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = A65F73D81FCC9E2500F2492E /* profile.png */; };
 		A66E1A051FDFCC04005B7B61 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66E1A041FDFCC04005B7B61 /* ReportViewController.swift */; };
+		A66E1A081FDFCDF8005B7B61 /* gallery.png in Resources */ = {isa = PBXBuildFile; fileRef = A66E1A061FDFCDF8005B7B61 /* gallery.png */; };
+		A66E1A0B1FDFCE44005B7B61 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = A66E1A0A1FDFCE44005B7B61 /* camera.png */; };
 		FBCEA8A273B0C4F607C90B7E /* Pods_Fia_Alerts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A43B95930CE3FD091905425B /* Pods_Fia_Alerts.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +36,8 @@
 		A65AF1991FCCCB510052B934 /* AlertsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsTableViewController.swift; sourceTree = "<group>"; };
 		A65F73D81FCC9E2500F2492E /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		A66E1A041FDFCC04005B7B61 /* ReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
+		A66E1A061FDFCDF8005B7B61 /* gallery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gallery.png; sourceTree = "<group>"; };
+		A66E1A0A1FDFCE44005B7B61 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,8 @@
 		A61D70A21FCC9260008B52B2 /* Fia Alerts */ = {
 			isa = PBXGroup;
 			children = (
+				A66E1A0A1FDFCE44005B7B61 /* camera.png */,
+				A66E1A061FDFCDF8005B7B61 /* gallery.png */,
 				A66E1A041FDFCC04005B7B61 /* ReportViewController.swift */,
 				A65F73D81FCC9E2500F2492E /* profile.png */,
 				A61D70A31FCC9260008B52B2 /* AppDelegate.swift */,
@@ -164,7 +170,9 @@
 			files = (
 				A61D70B11FCC9260008B52B2 /* LaunchScreen.storyboard in Resources */,
 				A61D70AE1FCC9260008B52B2 /* Assets.xcassets in Resources */,
+				A66E1A081FDFCDF8005B7B61 /* gallery.png in Resources */,
 				A61D70A91FCC9260008B52B2 /* Main.storyboard in Resources */,
+				A66E1A0B1FDFCE44005B7B61 /* camera.png in Resources */,
 				A65F73D91FCC9E2500F2492E /* profile.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

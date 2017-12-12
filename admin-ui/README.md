@@ -1,5 +1,6 @@
 # Admin UI
 
+Admin UI displays incoming alerts, and allows administrators to view and modify, to reject or to accept them. After accepting the alerts will be published to FIA.
 
 ## Development
 

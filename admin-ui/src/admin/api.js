@@ -19,25 +19,18 @@ export const listPendingAlerts = (AWS) => {
       '#s': 'status'
     },
     ExpressionAttributeValues: {
-      ':pending': {S: 'pending'}
+      ':pending': 'pending'
     },
   }
 
   return new Promise((resolve, reject) => {
-    docClient.scan(params, (err, data) => {
+    docClient.query(params, (err, data) => {
       if(err) {
         console.error('Failed to fetch pending alerts', err)
         reject(err)
         return
       }
-      resolve(data.Items)
-      /* XXX
-      console.info('Found data', data.Items)
-      // TODO should filter in database
-      resolve(_.map(_.filter(data.Items, item => {
-        return item.status === 'pending'
-      }), fixTypes))
-      */
+      resolve(_.map(data.Items, fixTypes))
     })
   })
 }
@@ -52,7 +45,7 @@ export const listApprovedAlerts = (AWS) => {
       '#s': 'status'
     },
     ExpressionAttributeValues: {
-      ':pending': {S: 'approved'}
+      ':pending': 'approved'
     },
   }
 
@@ -63,15 +56,7 @@ export const listApprovedAlerts = (AWS) => {
         reject(err)
         return
       }
-
-      resolve(data.Items)
-      /* XXX
-      console.info('Found data', data.Items)
-      // TODO should filter in database
-      resolve(_.map(_.filter(data.Items, item => {
-        return item.status === 'approved'
-      }), fixTypes))
-      */
+      resolve(_.map(data.Items, fixTypes))
     })
   })
 }
@@ -86,7 +71,7 @@ export const listRejectedAlerts = (AWS) => {
       '#s': 'status'
     },
     ExpressionAttributeValues: {
-      ':pending': {S: 'rejected'}
+      ':pending': 'rejected'
     },
   }
 
@@ -97,14 +82,7 @@ export const listRejectedAlerts = (AWS) => {
         reject(err)
         return
       }
-      resolve(data.Items)
-      /*
-      console.info('Found data', data.Items)
-      // TODO should filter in database
-      resolve(_.map(_.filter(data.Items, item => {
-        return item.status === 'rejected'
-      }), fixTypes))
-      */
+      resolve(_.map(data.Items, fixTypes))
     })
   })
 }

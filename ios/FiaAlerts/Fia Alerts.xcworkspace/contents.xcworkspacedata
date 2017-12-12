@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Fia Alerts.xcodeproj">
+      location = "group:/Users/jukka/Documents/Code/Web/reinvent-2017/ios/FiaAlerts/FiaAlerts.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

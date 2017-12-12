@@ -14,13 +14,8 @@
 		A61D70AE1FCC9260008B52B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A61D70AD1FCC9260008B52B2 /* Assets.xcassets */; };
 		A61D70B11FCC9260008B52B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A61D70AF1FCC9260008B52B2 /* LaunchScreen.storyboard */; };
 		A65AF19A1FCCCB510052B934 /* AlertsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65AF1991FCCCB510052B934 /* AlertsTableViewController.swift */; };
-		A65AF19C1FCCD4BD0052B934 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65AF19B1FCCD4BD0052B934 /* ReportViewController.swift */; };
-		A65AF19E1FCCD8790052B934 /* fia-splashscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = A65AF19D1FCCD8790052B934 /* fia-splashscreen.png */; };
-		A65AF1A21FCCF2A10052B934 /* up-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = A65AF1A11FCCF2A00052B934 /* up-arrow.png */; };
-		A65AF1A41FCD027D0052B934 /* gallery.png in Resources */ = {isa = PBXBuildFile; fileRef = A65AF1A31FCD027D0052B934 /* gallery.png */; };
-		A65AF1A61FCD148B0052B934 /* camera.svg in Resources */ = {isa = PBXBuildFile; fileRef = A65AF1A51FCD148B0052B934 /* camera.svg */; };
-		A65AF1A81FCD16360052B934 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = A65AF1A71FCD16360052B934 /* camera.png */; };
 		A65F73D91FCC9E2500F2492E /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = A65F73D81FCC9E2500F2492E /* profile.png */; };
+		A66E1A051FDFCC04005B7B61 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66E1A041FDFCC04005B7B61 /* ReportViewController.swift */; };
 		FBCEA8A273B0C4F607C90B7E /* Pods_Fia_Alerts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A43B95930CE3FD091905425B /* Pods_Fia_Alerts.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +23,7 @@
 		2455AD697476055E80B6E6CD /* Pods-Fia Alerts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fia Alerts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fia Alerts/Pods-Fia Alerts.release.xcconfig"; sourceTree = "<group>"; };
 		64FC149D88EE029703B14B72 /* Pods-Fia Alerts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fia Alerts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fia Alerts/Pods-Fia Alerts.debug.xcconfig"; sourceTree = "<group>"; };
 		A43B95930CE3FD091905425B /* Pods_Fia_Alerts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fia_Alerts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A61D70A01FCC9260008B52B2 /* Fia Alerts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fia Alerts.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A61D70A01FCC9260008B52B2 /* FiaAlerts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FiaAlerts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61D70A31FCC9260008B52B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A61D70A51FCC9260008B52B2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A61D70A81FCC9260008B52B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -37,13 +32,8 @@
 		A61D70B01FCC9260008B52B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A61D70B21FCC9260008B52B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A65AF1991FCCCB510052B934 /* AlertsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsTableViewController.swift; sourceTree = "<group>"; };
-		A65AF19B1FCCD4BD0052B934 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
-		A65AF19D1FCCD8790052B934 /* fia-splashscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fia-splashscreen.png"; sourceTree = "<group>"; };
-		A65AF1A11FCCF2A00052B934 /* up-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "up-arrow.png"; path = "../../../../../../../Downloads/up-arrow.png"; sourceTree = "<group>"; };
-		A65AF1A31FCD027D0052B934 /* gallery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gallery.png; sourceTree = "<group>"; };
-		A65AF1A51FCD148B0052B934 /* camera.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = camera.svg; sourceTree = "<group>"; };
-		A65AF1A71FCD16360052B934 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		A65F73D81FCC9E2500F2492E /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
+		A66E1A041FDFCC04005B7B61 /* ReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +70,7 @@
 		A61D70A11FCC9260008B52B2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A61D70A01FCC9260008B52B2 /* Fia Alerts.app */,
+				A61D70A01FCC9260008B52B2 /* FiaAlerts.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -88,12 +78,8 @@
 		A61D70A21FCC9260008B52B2 /* Fia Alerts */ = {
 			isa = PBXGroup;
 			children = (
-				A65AF19D1FCCD8790052B934 /* fia-splashscreen.png */,
+				A66E1A041FDFCC04005B7B61 /* ReportViewController.swift */,
 				A65F73D81FCC9E2500F2492E /* profile.png */,
-				A65AF1A31FCD027D0052B934 /* gallery.png */,
-				A65AF1A51FCD148B0052B934 /* camera.svg */,
-				A65AF1A71FCD16360052B934 /* camera.png */,
-				A65AF1A11FCCF2A00052B934 /* up-arrow.png */,
 				A61D70A31FCC9260008B52B2 /* AppDelegate.swift */,
 				A61D70A51FCC9260008B52B2 /* ViewController.swift */,
 				A61D70A71FCC9260008B52B2 /* Main.storyboard */,
@@ -102,7 +88,6 @@
 				A61D70B21FCC9260008B52B2 /* Info.plist */,
 				A61D70AA1FCC9260008B52B2 /* Fia_Alerts.xcdatamodeld */,
 				A65AF1991FCCCB510052B934 /* AlertsTableViewController.swift */,
-				A65AF19B1FCCD4BD0052B934 /* ReportViewController.swift */,
 			);
 			path = "Fia Alerts";
 			sourceTree = "<group>";
@@ -118,9 +103,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A61D709F1FCC9260008B52B2 /* Fia Alerts */ = {
+		A61D709F1FCC9260008B52B2 /* FiaAlerts */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A61D70B51FCC9260008B52B2 /* Build configuration list for PBXNativeTarget "Fia Alerts" */;
+			buildConfigurationList = A61D70B51FCC9260008B52B2 /* Build configuration list for PBXNativeTarget "FiaAlerts" */;
 			buildPhases = (
 				F2ED893F5D5C6482849DEAC6 /* [CP] Check Pods Manifest.lock */,
 				A61D709C1FCC9260008B52B2 /* Sources */,
@@ -133,9 +118,9 @@
 			);
 			dependencies = (
 			);
-			name = "Fia Alerts";
+			name = FiaAlerts;
 			productName = "Fia Alerts";
-			productReference = A61D70A01FCC9260008B52B2 /* Fia Alerts.app */;
+			productReference = A61D70A01FCC9260008B52B2 /* FiaAlerts.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -154,7 +139,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A61D709B1FCC9260008B52B2 /* Build configuration list for PBXProject "Fia Alerts" */;
+			buildConfigurationList = A61D709B1FCC9260008B52B2 /* Build configuration list for PBXProject "FiaAlerts" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -167,7 +152,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A61D709F1FCC9260008B52B2 /* Fia Alerts */,
+				A61D709F1FCC9260008B52B2 /* FiaAlerts */,
 			);
 		};
 /* End PBXProject section */
@@ -177,14 +162,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A65AF1A21FCCF2A10052B934 /* up-arrow.png in Resources */,
-				A65AF1A61FCD148B0052B934 /* camera.svg in Resources */,
 				A61D70B11FCC9260008B52B2 /* LaunchScreen.storyboard in Resources */,
-				A65AF1A41FCD027D0052B934 /* gallery.png in Resources */,
-				A65AF1A81FCD16360052B934 /* camera.png in Resources */,
 				A61D70AE1FCC9260008B52B2 /* Assets.xcassets in Resources */,
 				A61D70A91FCC9260008B52B2 /* Main.storyboard in Resources */,
-				A65AF19E1FCCD8790052B934 /* fia-splashscreen.png in Resources */,
 				A65F73D91FCC9E2500F2492E /* profile.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,7 +227,7 @@
 				A65AF19A1FCCCB510052B934 /* AlertsTableViewController.swift in Sources */,
 				A61D70A61FCC9260008B52B2 /* ViewController.swift in Sources */,
 				A61D70AC1FCC9260008B52B2 /* Fia_Alerts.xcdatamodeld in Sources */,
-				A65AF19C1FCCD4BD0052B934 /* ReportViewController.swift in Sources */,
+				A66E1A051FDFCC04005B7B61 /* ReportViewController.swift in Sources */,
 				A61D70A41FCC9260008B52B2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,7 +396,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A61D709B1FCC9260008B52B2 /* Build configuration list for PBXProject "Fia Alerts" */ = {
+		A61D709B1FCC9260008B52B2 /* Build configuration list for PBXProject "FiaAlerts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A61D70B31FCC9260008B52B2 /* Debug */,
@@ -425,7 +405,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A61D70B51FCC9260008B52B2 /* Build configuration list for PBXNativeTarget "Fia Alerts" */ = {
+		A61D70B51FCC9260008B52B2 /* Build configuration list for PBXNativeTarget "FiaAlerts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A61D70B61FCC9260008B52B2 /* Debug */,

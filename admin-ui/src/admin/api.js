@@ -13,17 +13,14 @@ export const listPendingAlerts = (AWS) => {
   const docClient = new AWS.DynamoDB.DocumentClient();
   const params = {
     TableName: window.config.aws.dynamoPendingAlerts,
-    /*
-    TODO should do some filtering
-
-    FilterExpression: '#s = :pending',
+    IndexName: 'statusIndex',
+    KeyConditionExpression: '#s = :pending',
     ExpressionAttributeNames: {
       '#s': 'status'
     },
     ExpressionAttributeValues: {
       ':pending': {S: 'pending'}
     },
-    */
   }
 
   return new Promise((resolve, reject) => {
@@ -33,11 +30,14 @@ export const listPendingAlerts = (AWS) => {
         reject(err)
         return
       }
+      resolve(data.Items)
+      /* XXX
       console.info('Found data', data.Items)
       // TODO should filter in database
       resolve(_.map(_.filter(data.Items, item => {
         return item.status === 'pending'
       }), fixTypes))
+      */
     })
   })
 }
@@ -46,31 +46,32 @@ export const listApprovedAlerts = (AWS) => {
   const docClient = new AWS.DynamoDB.DocumentClient();
   const params = {
     TableName: window.config.aws.dynamoPendingAlerts,
-    /*
-    TODO should do some filtering
-
-    FilterExpression: '#s = :pending',
+    IndexName: 'statusIndex',
+    KeyConditionExpression: '#s = :pending',
     ExpressionAttributeNames: {
       '#s': 'status'
     },
     ExpressionAttributeValues: {
-      ':pending': {S: 'pending'}
+      ':pending': {S: 'approved'}
     },
-    */
   }
 
   return new Promise((resolve, reject) => {
-    docClient.scan(params, (err, data) => {
+    docClient.query(params, (err, data) => {
       if(err) {
         console.error('Failed to fetch pending alerts', err)
         reject(err)
         return
       }
+
+      resolve(data.Items)
+      /* XXX
       console.info('Found data', data.Items)
       // TODO should filter in database
       resolve(_.map(_.filter(data.Items, item => {
         return item.status === 'approved'
       }), fixTypes))
+      */
     })
   })
 }
@@ -79,31 +80,31 @@ export const listRejectedAlerts = (AWS) => {
   const docClient = new AWS.DynamoDB.DocumentClient();
   const params = {
     TableName: window.config.aws.dynamoPendingAlerts,
-    /*
-    TODO should do some filtering
-
-    FilterExpression: '#s = :pending',
+    IndexName: 'statusIndex',
+    KeyConditionExpression: '#s = :pending',
     ExpressionAttributeNames: {
       '#s': 'status'
     },
     ExpressionAttributeValues: {
-      ':pending': {S: 'pending'}
+      ':pending': {S: 'rejected'}
     },
-    */
   }
 
   return new Promise((resolve, reject) => {
-    docClient.scan(params, (err, data) => {
+    docClient.query(params, (err, data) => {
       if(err) {
         console.error('Failed to fetch pending alerts', err)
         reject(err)
         return
       }
+      resolve(data.Items)
+      /*
       console.info('Found data', data.Items)
       // TODO should filter in database
       resolve(_.map(_.filter(data.Items, item => {
         return item.status === 'rejected'
       }), fixTypes))
+      */
     })
   })
 }

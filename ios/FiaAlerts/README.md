@@ -6,8 +6,6 @@ iOS app supports sending alerts to FIA. User' location is automatically included
 
 ![Screenshot of the application](screenshot2.png)
 
-TODO: fix image uploading. 
-
 ## Development
 
 ### Install dependencies
@@ -29,3 +27,7 @@ let awsRegionType: AWSRegionType = <insert-region-here>
 ### Deploying
 
 Deploy using Xcode.
+
+## TODO
+
+- Image upload is not working currently.

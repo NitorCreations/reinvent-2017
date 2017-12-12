@@ -151,6 +151,7 @@ class Admin extends Component {
     const discarded = _.map(this.state.discarded, makeListItem)
     const approved = _.map(this.state.approved, makeListItem)
     const pending = _.map(this.state.pending, makeListItem)
+    const selected = this.state.selected
 
     const positions = [{
       lat: _.get(this.state.selected, 'lat'),
@@ -257,28 +258,28 @@ class Admin extends Component {
 
               <div className="left col-12 mb2">
                 <div className="mb1 bold">Category</div>
-                <RadioButtonGroup name="category" onChange={this.updateField.bind(this, 'category')}>
+                <RadioButtonGroup name="category" valueSelected={this.state.selected.category} onChange={this.updateField.bind(this, 'category')} >
                   { _.map(CATEGORIES, (value, key) => (<RadioButton value={key} label={value} key={key} />)) }
                 </RadioButtonGroup>
               </div>
 
               <div className="left col-12 mb2">
                 <div className="mb1 bold">Severity</div>
-                <RadioButtonGroup name="severity" onChange={this.updateField.bind(this, 'severity')}>
+                <RadioButtonGroup name="severity" valueSelected={this.state.selected.severity} onChange={this.updateField.bind(this, 'severity')}>
                   { _.map(SEVERITIES, (value, key) => (<RadioButton value={key} label={value} key={key} />)) }
                 </RadioButtonGroup>
               </div>
 
               <div className="left col-12 mb2">
                 <div className="mb1 bold">Urgency</div>
-                <RadioButtonGroup name="urgency" onChange={this.updateField.bind(this, 'urgency')}>
+                <RadioButtonGroup name="urgency" valueSelected={this.state.selected.urgency} onChange={this.updateField.bind(this, 'urgency')}>
                   { _.map(URGENCIES, (value, key) => (<RadioButton value={key} label={value} key={key} />)) }
                 </RadioButtonGroup>
               </div>
 
               <div className="left col-12 mb2">
                 <div className="mb1 bold">Certainty</div>
-                <RadioButtonGroup name="certainty" onChange={this.updateField.bind(this, 'certainty')}>
+                <RadioButtonGroup name="certainty" valueSelected={this.state.selected.certainty} onChange={this.updateField.bind(this, 'certainty')}>
                   { _.map(CERTAINTIES, (value, key) => (<RadioButton value={key} label={value} key={key} />)) }
                 </RadioButtonGroup>
               </div>

@@ -6,88 +6,46 @@ const fixTypes = (item) => {
   return item
 }
 
+const listAlertsForStatus = (AWS, status) => {
+  const docClient = new AWS.DynamoDB.DocumentClient();
+  const params = {
+    TableName: window.config.aws.dynamoPendingAlerts,
+    IndexName: 'statusIndex',
+    KeyConditionExpression: '#s = :pending',
+    ExpressionAttributeNames: {
+      '#s': 'status'
+    },
+    ExpressionAttributeValues: {
+      ':pending': status
+    },
+  }
+
+  return new Promise((resolve, reject) => {
+    docClient.query(params, (err, data) => {
+      if(err) {
+        console.error('Failed to fetch pending alerts', err)
+        reject(err)
+        return
+      }
+      resolve(_.map(data.Items, fixTypes))
+    })
+  })
+}
+
 /**
  * AWS = this.props.AWS in React
  */
 export const listPendingAlerts = (AWS) => {
-  const docClient = new AWS.DynamoDB.DocumentClient();
-  const params = {
-    TableName: window.config.aws.dynamoPendingAlerts,
-    IndexName: 'statusIndex',
-    KeyConditionExpression: '#s = :pending',
-    ExpressionAttributeNames: {
-      '#s': 'status'
-    },
-    ExpressionAttributeValues: {
-      ':pending': 'pending'
-    },
-  }
-
-  return new Promise((resolve, reject) => {
-    docClient.query(params, (err, data) => {
-      if(err) {
-        console.error('Failed to fetch pending alerts', err)
-        reject(err)
-        return
-      }
-      resolve(_.map(data.Items, fixTypes))
-    })
-  })
+  return listAlertsForStatus(AWS, 'pending')
 }
 
 export const listApprovedAlerts = (AWS) => {
-  const docClient = new AWS.DynamoDB.DocumentClient();
-  const params = {
-    TableName: window.config.aws.dynamoPendingAlerts,
-    IndexName: 'statusIndex',
-    KeyConditionExpression: '#s = :pending',
-    ExpressionAttributeNames: {
-      '#s': 'status'
-    },
-    ExpressionAttributeValues: {
-      ':pending': 'approved'
-    },
-  }
-
-  return new Promise((resolve, reject) => {
-    docClient.query(params, (err, data) => {
-      if(err) {
-        console.error('Failed to fetch pending alerts', err)
-        reject(err)
-        return
-      }
-      resolve(_.map(data.Items, fixTypes))
-    })
-  })
+  return listAlertsForStatus(AWS, 'approved')
 }
 
 export const listRejectedAlerts = (AWS) => {
-  const docClient = new AWS.DynamoDB.DocumentClient();
-  const params = {
-    TableName: window.config.aws.dynamoPendingAlerts,
-    IndexName: 'statusIndex',
-    KeyConditionExpression: '#s = :pending',
-    ExpressionAttributeNames: {
-      '#s': 'status'
-    },
-    ExpressionAttributeValues: {
-      ':pending': 'rejected'
-    },
-  }
-
-  return new Promise((resolve, reject) => {
-    docClient.query(params, (err, data) => {
-      if(err) {
-        console.error('Failed to fetch pending alerts', err)
-        reject(err)
-        return
-      }
-      resolve(_.map(data.Items, fixTypes))
-    })
-  })
+  return listAlertsForStatus(AWS, 'rejected')
 }
-
-
 
 export const approveAlert = (AWS, capAlert, alert) => {
   alert.status = 'approved'

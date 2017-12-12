@@ -1,11 +1,10 @@
 {
   "aws": {
     "region": "us-east-1",
-    "identityPoolId": "us-east-1:1e166dad-bd15-4e39-9700-68c9c1305906",
-    "userPoolId": "us-east-1_0QbddCzbp",
-    "clientId": "apef76d7ojassafva35o5tap2",
-    "dynamoPendingAlerts": "aws-nodejs-riki3-DDBTableNotApproved-689LKZKDLM2Z",
-    "dynamoApprovedAlerts": "aws-nodejs-riki3-DDBTableApproved-18O0SSFMUK6QT"
-  },
-  "jotain": "muuta"
+    "identityPoolId": "us-east-1:85d49d2f-34af-4356-b4a5-c9fff5f2ec9e",
+    "userPoolId": "us-east-1_7sNHAUDRN",
+    "clientId": "6gd65aiokd10rf1hijotm7hd14",
+    "dynamoPendingAlerts": "aws-nodejs-demo-DDBTableNotApproved-1PBLAMOHRKZK0",
+    "dynamoApprovedAlerts": "aws-nodejs-demo-DDBTableApproved-1DPDO5D5PD7GQ"
+  }
 }

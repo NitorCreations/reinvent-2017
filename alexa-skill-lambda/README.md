@@ -23,4 +23,15 @@ Afterwards, you can use Service Simulator to verify how your skill responds
 
 ### Creating Lambda
 
-1. 
+1. Install required npm dependencies using `npm install`
+1. Navigate to your AWS Console and create a new [Lambda](https://eu-west-1.console.aws.amazon.com/lambda/home)
+1. Add `Alexa Skills Kit` as a trigger
+1. Change configuration 
+1. Upload the code from this folder - either manually file by file, or just zip all files and upload the archive
+1. Go configure the Alexa Skill to use this Lambda (arn) as it's endpoint
+
+## TODOs
+
+- automate configuration
+- automate deployment, make this part of the stack
+- use natural language for alert type so that they don't need to be defined as intents manually

@@ -175,6 +175,20 @@ functions:
 
 # you can add CloudFormation resource templates here
 resources:
+  Parameters:
+    # Configure the Defaults below to use your configuration
+    Route53HostedZoneID:
+      Type: String
+      Description: The Route53 hosted zone where domain names will be created.
+      Default: ""
+    BaseDomainName:
+      Type: String
+      Description: "The domain under which the application should run. Example: 'base.domain.com'"
+      Default: ""
+    TLSCertificateARN:
+      Type: String
+      Description: The ARN for the TLS certificate to use for the application.
+      Default: ""
   Resources:
     DDBTableNotApproved:
       Type: "AWS::DynamoDB::Table"
@@ -327,9 +341,14 @@ resources:
           Enabled: 'true'
           DefaultRootObject: index.html
           Aliases: 
-          - ${opt:stage}.rptf.nitor.zone
+          - Fn::Join:
+              - "."
+              - - ${opt:stage}
+                -
+                  Ref: BaseDomainName
           ViewerCertificate:
-            AcmCertificateArn: arn:aws:acm:us-east-1:809730537167:certificate/22e96a12-6c44-45cf-a76e-e3db66a9f523
+            AcmCertificateArn:
+              Ref: TLSCertificateARN
             SslSupportMethod: sni-only
             MinimumProtocolVersion: TLSv1
           DefaultCacheBehavior:
@@ -345,8 +364,14 @@ resources:
     DNSRecord:
       Type: AWS::Route53::RecordSet
       Properties:
-        HostedZoneId: Z3UXKNRKDT2TVC
-        Name: ${opt:stage}.rptf.nitor.zone.
+        HostedZoneId:
+          Ref: Route53HostedZoneID
+        Name:
+          Fn::Join:
+            - "."
+            - - ${opt:stage}
+              -
+                Ref: BaseDomainName
         Type: A
         AliasTarget:
           HostedZoneId: Z2FDTNDATAQYW2

@@ -1,5 +1,13 @@
 # iOS Client
 
+iOS app supports sending alerts to FIA. User' location is automatically included.
+
+![Screenshot of the application](screenshot1.png)
+
+![Screenshot of the application](screenshot2.png)
+
+TODO: fix image uploading. 
+
 ## Development
 
 ### Install dependencies

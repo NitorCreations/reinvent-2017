@@ -1,3 +1,5 @@
-Route53HostedZoneID: Z3UXKNRKDT2TVC
-BaseDomainName: rptf.nitor.zone
-TLSCertificateARN: arn:aws:acm:us-east-1:809730537167:certificate/22e96a12-6c44-45cf-a76e-e3db66a9f523
+Route53HostedZoneID:
+# The base domain name needs to be the domain name for the route 53 hosted zone above
+BaseDomainName:
+# Certificate should be a wildcard certificate for the base domain name above
+TLSCertificateARN:

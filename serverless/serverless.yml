@@ -204,6 +204,18 @@ resources:
         ProvisionedThroughput:
           ReadCapacityUnits: 5
           WriteCapacityUnits: 5
+        GlobalSecondaryIndexes:
+          -
+            IndexName: "statusIndex"
+            KeySchema:
+              -
+                AttributeName: "status"
+                KeyType: "HASH"
+            Projection:
+              ProjectionType: "ALL"
+            ProvisionedThroughput:
+              ReadCapacityUnits: 5
+              WriteCapacityUnits: 5
     DDBTableApproved:
       Type: "AWS::DynamoDB::Table"
       Properties:

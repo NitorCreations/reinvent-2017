@@ -2,6 +2,12 @@
 
 Admin UI displays incoming alerts, and allows administrators to view and modify, to reject or to accept them. After accepting the alerts will be published to FIA.
 
+![Screenshot login](screenshot-login.png)
+
+![Screenshot 1](screenshot1.png)
+
+![Screenshot 2](screenshot2.png)
+
 ## Development
 
 ### Install dependencies.

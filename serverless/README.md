@@ -29,3 +29,7 @@ aws_access_key_id = <insert-access-key-here>
 export AWS_PROFILE=rptf
 ./up.sh <your-stage-name>
 ```
+
+NOTES
+- Deploying for the first time takes a rather long e.g 15-20 minutes due to CloudFront deployment.
+- `up.sh` script has been developed with Linux, results may vary with MacOS.

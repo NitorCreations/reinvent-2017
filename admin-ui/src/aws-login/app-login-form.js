@@ -6,10 +6,7 @@ class AppLoginForm extends LoginForm {
 
   constructor(props) {
     super(props)
-    this.state = {
-      username: 'testi',
-      password: 'test123TEST!',
-    }
+    this.state = {}
   }
 
   handleUsernameChange(event) {

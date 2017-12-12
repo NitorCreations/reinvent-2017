@@ -3,7 +3,7 @@
 
 ## Architecture
 
-TODO
+![Architecture diagram](architecture.png)
 
 ## Installing
 [Backend](serverless/README.md)

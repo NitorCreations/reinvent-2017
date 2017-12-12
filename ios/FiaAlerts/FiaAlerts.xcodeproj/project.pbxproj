@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A61D70A41FCC9260008B52B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61D70A31FCC9260008B52B2 /* AppDelegate.swift */; };
-		A61D70A61FCC9260008B52B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61D70A51FCC9260008B52B2 /* ViewController.swift */; };
 		A61D70A91FCC9260008B52B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A61D70A71FCC9260008B52B2 /* Main.storyboard */; };
 		A61D70AC1FCC9260008B52B2 /* Fia_Alerts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A61D70AA1FCC9260008B52B2 /* Fia_Alerts.xcdatamodeld */; };
 		A61D70AE1FCC9260008B52B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A61D70AD1FCC9260008B52B2 /* Assets.xcassets */; };
@@ -27,7 +26,6 @@
 		A43B95930CE3FD091905425B /* Pods_Fia_Alerts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fia_Alerts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61D70A01FCC9260008B52B2 /* FiaAlerts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FiaAlerts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61D70A31FCC9260008B52B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A61D70A51FCC9260008B52B2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A61D70A81FCC9260008B52B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A61D70AB1FCC9260008B52B2 /* Fia_Alerts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Fia_Alerts.xcdatamodel; sourceTree = "<group>"; };
 		A61D70AD1FCC9260008B52B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -84,15 +82,14 @@
 			children = (
 				A66E1A0A1FDFCE44005B7B61 /* camera.png */,
 				A66E1A061FDFCDF8005B7B61 /* gallery.png */,
-				A66E1A041FDFCC04005B7B61 /* ReportViewController.swift */,
 				A65F73D81FCC9E2500F2492E /* profile.png */,
 				A61D70A31FCC9260008B52B2 /* AppDelegate.swift */,
-				A61D70A51FCC9260008B52B2 /* ViewController.swift */,
 				A61D70A71FCC9260008B52B2 /* Main.storyboard */,
 				A61D70AD1FCC9260008B52B2 /* Assets.xcassets */,
 				A61D70AF1FCC9260008B52B2 /* LaunchScreen.storyboard */,
 				A61D70B21FCC9260008B52B2 /* Info.plist */,
 				A61D70AA1FCC9260008B52B2 /* Fia_Alerts.xcdatamodeld */,
+				A66E1A041FDFCC04005B7B61 /* ReportViewController.swift */,
 				A65AF1991FCCCB510052B934 /* AlertsTableViewController.swift */,
 			);
 			path = "Fia Alerts";
@@ -233,7 +230,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A65AF19A1FCCCB510052B934 /* AlertsTableViewController.swift in Sources */,
-				A61D70A61FCC9260008B52B2 /* ViewController.swift in Sources */,
 				A61D70AC1FCC9260008B52B2 /* Fia_Alerts.xcdatamodeld in Sources */,
 				A66E1A051FDFCC04005B7B61 /* ReportViewController.swift in Sources */,
 				A61D70A41FCC9260008B52B2 /* AppDelegate.swift in Sources */,

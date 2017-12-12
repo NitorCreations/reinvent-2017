@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -378,50 +377,9 @@
                     <view key="view" contentMode="scaleToFill" id="Ry8-K4-6NT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Describe the emergency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hf6-JB-C3x">
-                                <rect key="frame" x="16" y="77" width="343" height="33"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="33" id="zhR-Mr-INS"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Type here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xcu-jb-U2I">
-                                <rect key="frame" x="16" y="118" width="343" height="137"/>
-                                <color key="tintColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQJ-Kr-QGW">
-                                <rect key="frame" x="16" y="278" width="90" height="46"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="ztw-wE-NNb"/>
-                                </constraints>
-                                <size key="titleShadowOffset" width="5" height="5"/>
-                                <state key="normal" title="Report"/>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Hf6-JB-C3x" firstAttribute="leading" secondItem="Ry8-K4-6NT" secondAttribute="leadingMargin" id="HaD-nG-Xy3"/>
-                            <constraint firstItem="Nxo-jR-9xP" firstAttribute="trailing" secondItem="vQJ-Kr-QGW" secondAttribute="trailing" constant="269" id="JYr-Vw-1TP"/>
-                            <constraint firstItem="vQJ-Kr-QGW" firstAttribute="top" secondItem="xcu-jb-U2I" secondAttribute="bottom" constant="23" id="SHh-HA-QRr"/>
-                            <constraint firstItem="Hf6-JB-C3x" firstAttribute="top" secondItem="Nxo-jR-9xP" secondAttribute="top" constant="13" id="SZb-ex-mge"/>
-                            <constraint firstItem="Hf6-JB-C3x" firstAttribute="trailing" secondItem="Ry8-K4-6NT" secondAttribute="trailingMargin" id="SzB-Q3-rN5"/>
-                            <constraint firstItem="xcu-jb-U2I" firstAttribute="top" secondItem="Hf6-JB-C3x" secondAttribute="bottom" constant="8" symbolic="YES" id="UBv-QQ-3hS"/>
-                            <constraint firstItem="Hf6-JB-C3x" firstAttribute="leading" secondItem="xcu-jb-U2I" secondAttribute="leading" id="iWw-ge-Epj"/>
-                            <constraint firstItem="Hf6-JB-C3x" firstAttribute="trailing" secondItem="xcu-jb-U2I" secondAttribute="trailing" id="jUe-JM-fzJ"/>
-                            <constraint firstItem="Nxo-jR-9xP" firstAttribute="bottom" secondItem="vQJ-Kr-QGW" secondAttribute="bottom" constant="343" id="uUA-OG-mnr"/>
-                            <constraint firstItem="xcu-jb-U2I" firstAttribute="leading" secondItem="vQJ-Kr-QGW" secondAttribute="leading" id="viO-Kg-kv9"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Nxo-jR-9xP"/>
                     </view>
-                    <connections>
-                        <outlet property="descriptionLabel" destination="Hf6-JB-C3x" id="GA9-0Q-Cqa"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5rQ-7Y-2OT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

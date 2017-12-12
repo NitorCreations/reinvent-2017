@@ -21,10 +21,11 @@ plugins:
 
 custom:
   customDomain:
-    domainName: gw-${opt:stage}.rptf.nitor.zone
+    domainName: gw-${opt:stage}.${self:custom.extvars.BaseDomainName}
     basePath: ''
     stage: ${opt:stage}
     createRoute53Record: true
+  extvars: ${file(variables.yml)}
 
 provider:
   name: aws
@@ -180,15 +181,15 @@ resources:
     Route53HostedZoneID:
       Type: String
       Description: The Route53 hosted zone where domain names will be created.
-      Default: ""
+      Default: "${self:custom.extvars.Route53HostedZoneID}"
     BaseDomainName:
       Type: String
       Description: "The domain under which the application should run. Example: 'base.domain.com'"
-      Default: ""
+      Default: "${self:custom.extvars.BaseDomainName}"
     TLSCertificateARN:
       Type: String
       Description: The ARN for the TLS certificate to use for the application.
-      Default: ""
+      Default: "${self:custom.extvars.TLSCertificateARN}"
   Resources:
     DDBTableNotApproved:
       Type: "AWS::DynamoDB::Table"

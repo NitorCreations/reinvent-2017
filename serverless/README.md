@@ -12,6 +12,10 @@ Sets up following:
 - Admin UI to S3
 - CloudFront for distributing Admin UI
 
+## Exposed API endpoints
+
+See [API Gateway console](https://console.aws.amazon.com/apigateway)
+
 ## Development
 
 ### Install dependencies

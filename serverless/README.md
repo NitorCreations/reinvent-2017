@@ -1,5 +1,17 @@
 # Serverless Backend
 
+Serverless scripts to install and update all the backend systems
+
+Sets up following:
+- DynamoDB tables
+- Cognito UserPools, IndentityPools
+- Lambdas that receive alerts from the clients and publish them to FIA
+- S3 Buckets
+- Route53 configuration for DNS names and SSL sertificate
+- API Gateway
+- Admin UI to S3
+- CloudFront for distributing Admin UI
+
 ## Development
 
 ### Install dependencies
